@@ -1,7 +1,12 @@
 @import "tailwindcss";
-@import "tailwindcss/preflight";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+  .primary {
+    @apply text-blue-600;
+  }
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -29,11 +34,6 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
 
 button {
