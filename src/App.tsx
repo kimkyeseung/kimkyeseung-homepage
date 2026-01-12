@@ -17,69 +17,80 @@ import {
 
 function App() {
   return (
-    <div className="min-h-screen py-8 px-4">
+    <div className="min-h-screen py-12 px-6 sm:px-8 lg:px-12">
       <div className="max-w-5xl mx-auto">
         {/* Header Section */}
-        <header className="card mb-6">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            {/* Profile Image */}
-            <div className="relative flex-shrink-0">
-              <div className="w-48 h-48 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl rotate-3 absolute -z-10 top-2 left-2" />
-              <div className="w-48 h-48 bg-yellow-300 rounded-2xl -rotate-3 absolute -z-10 -top-2 -left-2" />
+        <header className="card mb-8 animate-fade-in !overflow-visible !p-8">
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            {/* Profile Image with Enhanced Decorations */}
+            <div className="relative flex-shrink-0 group ml-6 mt-6">
+              {/* Outer glow effect */}
+              <div className="absolute inset-0 w-52 h-52 -top-2 -left-2 bg-gradient-to-br from-blue-400/30 to-purple-400/30 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+
+              {/* Decorative shapes */}
+              <div className="absolute w-48 h-48 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl rotate-6 top-1 left-1 opacity-90 group-hover:rotate-12 transition-transform duration-500" />
+              <div className="absolute w-48 h-48 bg-gradient-to-br from-yellow-300 to-amber-400 rounded-2xl -rotate-6 -top-1 -left-1 opacity-90 group-hover:-rotate-12 transition-transform duration-500" />
+
+              {/* Accent dots */}
+              <div className="absolute -top-3 -right-3 w-6 h-6 bg-blue-500 rounded-full animate-pulse" />
+              <div className="absolute -bottom-2 -left-3 w-4 h-4 bg-yellow-400 rounded-full animate-pulse delay-150" />
+              <div className="absolute top-1/2 -right-4 w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-300" />
+
+              {/* Main image */}
               <img
                 src={PROFILE_IMAGE_URL}
                 alt="Profile"
-                className="w-48 h-48 object-cover rounded-2xl relative z-10 border-4 border-white shadow-lg"
+                className="w-48 h-48 object-cover rounded-2xl relative z-10 border-4 border-white shadow-2xl group-hover:scale-105 transition-transform duration-500"
               />
             </div>
 
             {/* Info */}
             <div className="flex-1 text-center md:text-left">
-              <p className="text-gray-500 text-lg mb-1">My name is</p>
-              <h1 className="text-4xl font-bold text-gray-800 mb-2">
+              <p className="text-gray-500 text-lg mb-1 animate-slide-up">My name is</p>
+              <h1 className="text-4xl font-bold text-gray-800 mb-2 animate-slide-up animation-delay-100">
                 {NAME_EN}
               </h1>
-              <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
-                <span className="px-4 py-1 bg-blue-600 text-white rounded-full font-medium">
+              <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4 animate-slide-up animation-delay-200">
+                <span className="px-4 py-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full font-medium shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all duration-300">
                   {TITLE}
                 </span>
-                <span className="px-4 py-1 bg-yellow-400 text-gray-800 rounded-full font-medium text-sm">
+                <span className="px-4 py-1 bg-gradient-to-r from-yellow-400 to-amber-400 text-gray-800 rounded-full font-medium text-sm shadow-lg shadow-yellow-400/30 hover:shadow-xl hover:shadow-yellow-400/40 hover:-translate-y-0.5 transition-all duration-300">
                   {SUB_TITLE}
                 </span>
               </div>
-              <p className="text-gray-600 mb-4 max-w-xl text-sm leading-relaxed">
+              <p className="text-gray-600 mb-4 max-w-xl text-sm leading-relaxed animate-slide-up animation-delay-300">
                 {INTRODUCTION}
               </p>
 
               {/* Contact Info */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm">
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm animate-slide-up animation-delay-400">
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition"
+                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  <FaEnvelope /> {EMAIL}
+                  <FaEnvelope className="text-lg" /> {EMAIL}
                 </a>
                 <a
                   href={`tel:${PHONE_NUMBER}`}
-                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition"
+                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  <FaPhone /> {PHONE_NUMBER}
+                  <FaPhone className="text-lg" /> {PHONE_NUMBER}
                 </a>
                 <a
                   href={GITHUB_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition"
+                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  <FaGithub /> GitHub
+                  <FaGithub className="text-lg" /> GitHub
                 </a>
                 <a
                   href={LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition"
+                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  <FaLinkedin /> LinkedIn
+                  <FaLinkedin className="text-lg" /> LinkedIn
                 </a>
               </div>
             </div>
@@ -87,30 +98,40 @@ function App() {
         </header>
 
         {/* Summary Section */}
-        <section className="card mb-6">
+        <section className="card mb-6 animate-fade-in animation-delay-200">
           <h2 className="section-title">About Me</h2>
           <div className="grid md:grid-cols-2 gap-4">
             {SUMMARIES.map((summary, index) => (
               <div
                 key={index}
-                className="p-4 bg-gray-50 rounded-xl border-l-4 border-blue-500"
+                className="group p-5 bg-gradient-to-br from-gray-50 to-white rounded-xl border-l-4 border-blue-500 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-default"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <h3 className="font-bold text-gray-800 mb-2">{summary.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {summary.description}
-                </p>
-                {summary.keywords && (
-                  <div className="flex flex-wrap gap-1 mt-2">
-                    {summary.keywords.map((keyword, i) => (
-                      <span
-                        key={i}
-                        className="text-xs px-2 py-0.5 bg-blue-100 text-blue-700 rounded"
-                      >
-                        {keyword}
-                      </span>
-                    ))}
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform duration-300">
+                    {index + 1}
                   </div>
-                )}
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                      {summary.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {summary.description}
+                    </p>
+                    {summary.keywords && (
+                      <div className="flex flex-wrap gap-1.5 mt-3">
+                        {summary.keywords.map((keyword, i) => (
+                          <span
+                            key={i}
+                            className="text-xs px-2.5 py-1 bg-blue-100 text-blue-700 rounded-full hover:bg-blue-200 transition-colors duration-200"
+                          >
+                            {keyword}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -121,15 +142,19 @@ function App() {
           {/* Left Column */}
           <div className="space-y-6">
             {/* Education */}
-            <section className="card">
+            <section className="card animate-fade-in animation-delay-300">
               <h2 className="section-title">Education</h2>
               <div className="space-y-4">
                 {EDUCATIONS.map((edu, index) => (
-                  <div key={index} className="border-l-2 border-gray-200 pl-3">
-                    <h3 className="font-semibold text-gray-800 text-sm">
+                  <div
+                    key={index}
+                    className="group relative pl-6 border-l-2 border-blue-200 hover:border-blue-500 transition-colors duration-300"
+                  >
+                    <div className="absolute left-0 top-1 w-3 h-3 bg-blue-500 rounded-full -translate-x-[7px] group-hover:scale-125 transition-transform duration-300" />
+                    <h3 className="font-semibold text-gray-800 text-sm group-hover:text-blue-600 transition-colors duration-300">
                       {edu.name}
                     </h3>
-                    <p className="text-blue-600 text-xs">
+                    <p className="text-blue-600 text-xs font-medium">
                       {edu.joinedAt} - {edu.isOngoing ? '진행 중' : edu.seperatedAt}
                     </p>
                     {edu.descriptions.map((desc, i) => (
@@ -142,60 +167,84 @@ function App() {
               </div>
             </section>
 
-            {/* Tech Stack */}
-            <section className="card">
+            {/* Tech Stack with Hover Effects and Tooltips */}
+            <section className="card animate-fade-in animation-delay-400">
               <h2 className="section-title">Tech Stack</h2>
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                  <h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                     Frontend
                   </h3>
                   <div className="grid grid-cols-3 gap-3">
                     {skillSets.frontEnds.slice(0, 6).map((skill, index) => (
                       <div
                         key={index}
-                        className="flex flex-col items-center gap-1"
+                        className="group relative flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-blue-50 transition-all duration-300 cursor-pointer"
                       >
-                        <div className="text-2xl">{skill.Icon}</div>
-                        <span className="text-xs text-gray-600 text-center">
+                        <div className="text-2xl group-hover:scale-125 group-hover:text-blue-600 transition-all duration-300">
+                          {skill.Icon}
+                        </div>
+                        <span className="text-xs text-gray-600 text-center group-hover:text-blue-600 transition-colors duration-300">
                           {skill.name.split(' / ')[0]}
                         </span>
+                        {/* Tooltip */}
+                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-20 pointer-events-none">
+                          {skill.name}
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800" />
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                  <h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                     Backend
                   </h3>
                   <div className="grid grid-cols-3 gap-3">
                     {skillSets.backEnds.slice(0, 6).map((skill, index) => (
                       <div
                         key={index}
-                        className="flex flex-col items-center gap-1"
+                        className="group relative flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-green-50 transition-all duration-300 cursor-pointer"
                       >
-                        <div className="text-2xl">{skill.Icon}</div>
-                        <span className="text-xs text-gray-600 text-center">
+                        <div className="text-2xl group-hover:scale-125 group-hover:text-green-600 transition-all duration-300">
+                          {skill.Icon}
+                        </div>
+                        <span className="text-xs text-gray-600 text-center group-hover:text-green-600 transition-colors duration-300">
                           {skill.name.split(' / ')[0]}
                         </span>
+                        {/* Tooltip */}
+                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-20 pointer-events-none">
+                          {skill.name}
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800" />
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                  <h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
                     DevOps & Tools
                   </h3>
                   <div className="grid grid-cols-3 gap-3">
                     {skillSets.devOps.map((skill, index) => (
                       <div
                         key={index}
-                        className="flex flex-col items-center gap-1"
+                        className="group relative flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-purple-50 transition-all duration-300 cursor-pointer"
                       >
-                        <div className="text-2xl">{skill.Icon}</div>
-                        <span className="text-xs text-gray-600 text-center">
+                        <div className="text-2xl group-hover:scale-125 group-hover:text-purple-600 transition-all duration-300">
+                          {skill.Icon}
+                        </div>
+                        <span className="text-xs text-gray-600 text-center group-hover:text-purple-600 transition-colors duration-300">
                           {skill.name.split(' ')[0]}
                         </span>
+                        {/* Tooltip */}
+                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-20 pointer-events-none">
+                          {skill.name}
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800" />
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -204,7 +253,7 @@ function App() {
             </section>
 
             {/* Key Skills */}
-            <section className="card">
+            <section className="card animate-fade-in animation-delay-500">
               <h2 className="section-title">Key Skills</h2>
               <div className="flex flex-wrap gap-2">
                 {[
@@ -219,7 +268,11 @@ function App() {
                   '반응형 웹',
                   '성능 최적화',
                 ].map((skill, index) => (
-                  <span key={index} className="skill-tag">
+                  <span
+                    key={index}
+                    className="skill-tag hover:scale-110 hover:shadow-lg hover:shadow-blue-600/30 transition-all duration-300 cursor-default"
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
                     #{skill}
                   </span>
                 ))}
@@ -227,90 +280,112 @@ function App() {
             </section>
           </div>
 
-          {/* Right Column - Work Experience */}
+          {/* Right Column - Work Experience Timeline */}
           <div className="md:col-span-2 space-y-6">
             {/* Work Experience */}
-            <section className="card">
+            <section className="card animate-fade-in animation-delay-300">
               <h2 className="section-title">Work Experience</h2>
-              <div className="space-y-6">
-                {EXPERIENCES.map((exp, index) => (
-                  <div
-                    key={index}
-                    className="border-b border-gray-100 pb-6 last:border-0 last:pb-0"
-                  >
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
-                      <div>
-                        <h3 className="font-bold text-gray-800">{exp.name}</h3>
-                        {exp.role && (
-                          <p className="text-blue-600 text-sm">{exp.role}</p>
-                        )}
-                        {exp.descriptions[0] && (
-                          <p className="text-gray-500 text-xs">
-                            {exp.descriptions[0].title}
-                          </p>
-                        )}
-                      </div>
-                      <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded mt-1 sm:mt-0 inline-block">
-                        {exp.joinedAt} - {exp.isOngoing ? '현재' : exp.seperatedAt}
-                      </span>
-                    </div>
+              <div className="relative">
+                {/* Timeline line */}
+                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-blue-400 to-blue-300 rounded-full" />
 
-                    {/* Tech Stack */}
-                    {exp.techs.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mb-3">
-                        {exp.techs.map((tech, i) => (
-                          <span
-                            key={i}
-                            className="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                <div className="space-y-8">
+                  {EXPERIENCES.map((exp, index) => (
+                    <div
+                      key={index}
+                      className="relative pl-8 group"
+                    >
+                      {/* Timeline dot */}
+                      <div className="absolute left-0 top-1 -translate-x-[calc(50%-1px)]">
+                        <div className="w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow-lg group-hover:scale-125 transition-transform duration-300" />
+                        <div className="absolute inset-0 w-4 h-4 bg-blue-500 rounded-full animate-ping opacity-20" />
                       </div>
-                    )}
 
-                    {/* Projects */}
-                    {exp.projects.length > 0 && (
-                      <div className="space-y-3">
-                        {exp.projects.map((project, i) => (
-                          <div
-                            key={i}
-                            className="pl-3 border-l-2 border-blue-200"
-                          >
-                            <h4 className="font-semibold text-gray-700 text-sm">
-                              {project.title}
-                            </h4>
-                            {project.information && (
-                              <p className="text-gray-500 text-xs mb-1">
-                                {project.information}
-                              </p>
+                      {/* Content card */}
+                      <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
+                          <div>
+                            <h3 className="font-bold text-gray-800 text-lg group-hover:text-blue-600 transition-colors duration-300">
+                              {exp.name}
+                            </h3>
+                            {exp.role && (
+                              <p className="text-blue-600 text-sm font-medium">{exp.role}</p>
                             )}
-                            <ul className="text-gray-600 text-xs space-y-0.5">
-                              {project.descriptions.map((desc, j) => (
-                                <li key={j} className="flex items-start gap-1">
-                                  <span className="text-blue-400 mt-1">•</span>
-                                  <span>{desc}</span>
-                                </li>
-                              ))}
-                            </ul>
-                            {project.impact && (
-                              <p className="text-xs text-green-600 font-medium mt-1">
-                                → {project.impact}
+                            {exp.descriptions[0] && (
+                              <p className="text-gray-500 text-xs">
+                                {exp.descriptions[0].title}
                               </p>
                             )}
                           </div>
-                        ))}
+                          <span className="text-xs text-white bg-gradient-to-r from-blue-500 to-blue-600 px-3 py-1.5 rounded-full mt-2 sm:mt-0 inline-block shadow-sm font-medium">
+                            {exp.joinedAt} - {exp.isOngoing ? '현재' : exp.seperatedAt}
+                          </span>
+                        </div>
+
+                        {/* Tech Stack */}
+                        {exp.techs.length > 0 && (
+                          <div className="flex flex-wrap gap-1.5 mb-4">
+                            {exp.techs.map((tech, i) => (
+                              <span
+                                key={i}
+                                className="text-xs px-2.5 py-1 bg-gray-100 text-gray-700 rounded-full hover:bg-blue-100 hover:text-blue-700 transition-colors duration-200"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Projects */}
+                        {exp.projects.length > 0 && (
+                          <div className="space-y-4">
+                            {exp.projects.map((project, i) => (
+                              <div
+                                key={i}
+                                className="relative pl-4 border-l-2 border-blue-200 hover:border-blue-400 transition-colors duration-300"
+                              >
+                                <div className="absolute left-0 top-1.5 w-2 h-2 bg-blue-400 rounded-full -translate-x-[5px]" />
+                                <h4 className="font-semibold text-gray-700 text-sm">
+                                  {project.title}
+                                </h4>
+                                {project.information && (
+                                  <p className="text-gray-500 text-xs mb-2">
+                                    {project.information}
+                                  </p>
+                                )}
+                                <ul className="text-gray-600 text-xs space-y-1">
+                                  {project.descriptions.map((desc, j) => (
+                                    <li key={j} className="flex items-start gap-2">
+                                      <span className="text-blue-400 mt-0.5 flex-shrink-0">&#8227;</span>
+                                      <span>{desc}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                                {project.impact && (
+                                  <div className="mt-2 flex items-center gap-1.5">
+                                    <span className="text-xs text-green-600 font-semibold bg-green-50 px-2 py-0.5 rounded-full">
+                                      Impact
+                                    </span>
+                                    <span className="text-xs text-green-700">
+                                      {project.impact}
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                ))}
+                    </div>
+                  ))}
+                </div>
               </div>
             </section>
           </div>
         </div>
 
         {/* Footer */}
-        <footer className="text-center mt-8 text-gray-500 text-sm">
+        <footer className="text-center mt-8 text-gray-500 text-sm animate-fade-in animation-delay-600">
           <p>&copy; 2024 {NAME_EN}. All rights reserved.</p>
         </footer>
       </div>
