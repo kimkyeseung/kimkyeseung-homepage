@@ -19,7 +19,7 @@ function App() {
         본문 바로가기
       </a>
 
-      <div className="max-w-5xl mx-auto">
+      <div id="resume-content" className="max-w-5xl mx-auto">
         <Header />
 
         {/* Main Content */}
