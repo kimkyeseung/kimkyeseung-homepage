@@ -25,36 +25,38 @@ function App() {
             {/* Profile Image with Enhanced Decorations */}
             <div className="relative flex-shrink-0 group ml-6 mt-6">
               {/* Outer glow effect */}
-              <div className="absolute inset-0 w-52 h-52 -top-2 -left-2 bg-gradient-to-br from-blue-400/30 to-purple-400/30 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+              <div className="absolute inset-0 w-52 h-52 -top-2 -left-2 bg-gradient-to-br from-blue-400/30 to-purple-400/30 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" aria-hidden="true" />
 
               {/* Decorative shapes */}
-              <div className="absolute w-48 h-48 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl rotate-6 top-1 left-1 opacity-90 group-hover:rotate-12 transition-transform duration-500" />
-              <div className="absolute w-48 h-48 bg-gradient-to-br from-yellow-300 to-amber-400 rounded-2xl -rotate-6 -top-1 -left-1 opacity-90 group-hover:-rotate-12 transition-transform duration-500" />
+              <div className="absolute w-48 h-48 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl rotate-6 top-1 left-1 opacity-90 group-hover:rotate-12 transition-transform duration-500" aria-hidden="true" />
+              <div className="absolute w-48 h-48 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl -rotate-6 -top-1 -left-1 opacity-90 group-hover:-rotate-12 transition-transform duration-500" aria-hidden="true" />
 
-              {/* Accent dots */}
-              <div className="absolute -top-3 -right-3 w-6 h-6 bg-blue-500 rounded-full animate-pulse" />
-              <div className="absolute -bottom-2 -left-3 w-4 h-4 bg-yellow-400 rounded-full animate-pulse delay-150" />
-              <div className="absolute top-1/2 -right-4 w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-300" />
+              {/* Accent dots - static for professional look */}
+              <div className="absolute -top-3 -right-3 w-6 h-6 bg-blue-500/80 rounded-full" aria-hidden="true" />
+              <div className="absolute -bottom-2 -left-3 w-4 h-4 bg-purple-400/80 rounded-full" aria-hidden="true" />
+              <div className="absolute top-1/2 -right-4 w-3 h-3 bg-blue-400/80 rounded-full" aria-hidden="true" />
 
               {/* Main image */}
               <img
                 src={PROFILE_IMAGE_URL}
-                alt="Profile"
+                alt="김계승 프론트엔드 개발자 프로필 사진"
                 className="w-48 h-48 object-cover rounded-2xl relative z-10 border-4 border-white shadow-2xl group-hover:scale-105 transition-transform duration-500"
               />
             </div>
 
             {/* Info */}
             <div className="flex-1 text-center md:text-left">
-              <p className="text-gray-500 text-lg mb-1 animate-slide-up">My name is</p>
-              <h1 className="text-4xl font-bold text-gray-800 mb-2 animate-slide-up animation-delay-100">
+              <h1 className="text-4xl font-bold text-gray-800 mb-1 animate-slide-up">
                 {NAME_EN}
               </h1>
+              <p className="text-gray-500 text-base mb-3 animate-slide-up animation-delay-100">
+                6년차 프론트엔드 개발자
+              </p>
               <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4 animate-slide-up animation-delay-200">
                 <span className="px-4 py-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full font-medium shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all duration-300">
                   {TITLE}
                 </span>
-                <span className="px-4 py-1 bg-gradient-to-r from-yellow-400 to-amber-400 text-gray-800 rounded-full font-medium text-sm shadow-lg shadow-yellow-400/30 hover:shadow-xl hover:shadow-yellow-400/40 hover:-translate-y-0.5 transition-all duration-300">
+                <span className="px-4 py-1 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full font-medium text-sm shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-0.5 transition-all duration-300">
                   {SUB_TITLE}
                 </span>
               </div>
