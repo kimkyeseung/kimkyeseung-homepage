@@ -1,0 +1,7 @@
+export { Header } from './Header'
+export { AboutSection } from './AboutSection'
+export { EducationSection } from './EducationSection'
+export { TechStackSection } from './TechStackSection'
+export { KeySkillsSection } from './KeySkillsSection'
+export { ExperienceSection } from './ExperienceSection'
+export { Footer } from './Footer'
