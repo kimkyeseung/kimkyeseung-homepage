@@ -1,6 +1,6 @@
 import { StyleSheet, Font } from '@react-pdf/renderer'
 
-// Register Pretendard font (using system font fallback for PDF)
+// Register Pretendard font
 Font.register({
   family: 'Pretendard',
   fonts: [
@@ -33,6 +33,7 @@ export const colors = {
   border: '#e5e7eb',
   background: '#ffffff',
   accent: '#dbeafe',
+  success: '#059669',
 }
 
 export const styles = StyleSheet.create({
@@ -43,6 +44,27 @@ export const styles = StyleSheet.create({
     padding: 40,
     backgroundColor: colors.background,
     color: colors.text,
+  },
+
+  // Page Header (for page 2+)
+  pageHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 15,
+    paddingBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  pageHeaderName: {
+    fontSize: 14,
+    fontWeight: 700,
+    color: colors.text,
+  },
+  pageHeaderTitle: {
+    fontSize: 12,
+    fontWeight: 500,
+    color: colors.primary,
   },
 
   // Header
@@ -61,19 +83,19 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   name: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 700,
     color: colors.text,
     marginBottom: 4,
   },
   title: {
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: 600,
     color: colors.primary,
     marginBottom: 2,
   },
   subtitle: {
-    fontSize: 10,
+    fontSize: 11,
     color: colors.textSecondary,
     marginBottom: 8,
   },
@@ -81,7 +103,7 @@ export const styles = StyleSheet.create({
     fontSize: 9,
     color: colors.textSecondary,
     lineHeight: 1.5,
-    maxWidth: 350,
+    maxWidth: 380,
   },
   headerRight: {
     alignItems: 'flex-end',
@@ -99,13 +121,25 @@ export const styles = StyleSheet.create({
   // Two Column Layout
   twoColumn: {
     flexDirection: 'row',
-    gap: 20,
+    gap: 25,
   },
   leftColumn: {
     width: '35%',
   },
   rightColumn: {
     width: '65%',
+  },
+  leftColumnWide: {
+    width: '60%',
+  },
+  rightColumnNarrow: {
+    width: '40%',
+  },
+
+  // Tech Stack Row Layout
+  techStackRow: {
+    flexDirection: 'row',
+    gap: 15,
   },
 
   // Section
@@ -126,7 +160,7 @@ export const styles = StyleSheet.create({
 
   // Skills
   skillCategory: {
-    marginBottom: 8,
+    flex: 1,
   },
   skillCategoryTitle: {
     fontSize: 9,
@@ -137,14 +171,14 @@ export const styles = StyleSheet.create({
   skillTags: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 4,
+    gap: 3,
   },
   skillTag: {
     fontSize: 8,
     color: colors.textSecondary,
     backgroundColor: colors.accent,
     paddingVertical: 2,
-    paddingHorizontal: 6,
+    paddingHorizontal: 5,
     borderRadius: 3,
   },
 
@@ -152,21 +186,21 @@ export const styles = StyleSheet.create({
   keySkills: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 4,
+    gap: 5,
   },
   keySkillTag: {
-    fontSize: 8,
+    fontSize: 9,
     fontWeight: 500,
     color: colors.background,
     backgroundColor: colors.primary,
-    paddingVertical: 3,
-    paddingHorizontal: 8,
-    borderRadius: 10,
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderRadius: 12,
   },
 
   // Education
   educationItem: {
-    marginBottom: 8,
+    marginBottom: 10,
   },
   educationName: {
     fontSize: 10,
@@ -185,59 +219,73 @@ export const styles = StyleSheet.create({
 
   // Experience
   experienceItem: {
-    marginBottom: 12,
+    marginBottom: 14,
+    paddingBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
   },
   experienceHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginBottom: 4,
+    marginBottom: 6,
+  },
+  experienceHeaderLeft: {
+    flex: 1,
   },
   experienceName: {
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: 700,
     color: colors.text,
   },
   experienceRole: {
-    fontSize: 9,
+    fontSize: 10,
     fontWeight: 500,
     color: colors.primary,
   },
   experienceDesc: {
     fontSize: 8,
     color: colors.textSecondary,
-    marginBottom: 4,
+    marginTop: 2,
   },
   experiencePeriod: {
     fontSize: 8,
     fontWeight: 500,
     color: colors.textLight,
     backgroundColor: colors.accent,
-    paddingVertical: 2,
-    paddingHorizontal: 6,
-    borderRadius: 3,
+    paddingVertical: 3,
+    paddingHorizontal: 8,
+    borderRadius: 4,
   },
   experienceTechs: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 3,
-    marginBottom: 6,
+    gap: 4,
+    marginBottom: 8,
   },
   techTag: {
     fontSize: 7,
     color: colors.textSecondary,
     backgroundColor: '#f3f4f6',
-    paddingVertical: 1,
-    paddingHorizontal: 4,
+    paddingVertical: 2,
+    paddingHorizontal: 5,
     borderRadius: 2,
+  },
+
+  // Projects Container
+  projectsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
   },
 
   // Project
   project: {
-    marginBottom: 6,
+    width: '48%',
+    marginBottom: 4,
     paddingLeft: 8,
     borderLeftWidth: 2,
-    borderLeftColor: colors.border,
+    borderLeftColor: colors.accent,
   },
   projectTitle: {
     fontSize: 9,
@@ -259,7 +307,7 @@ export const styles = StyleSheet.create({
   projectImpact: {
     fontSize: 8,
     fontWeight: 500,
-    color: '#059669',
+    color: colors.success,
     marginTop: 3,
   },
 
@@ -267,21 +315,21 @@ export const styles = StyleSheet.create({
   summaryGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 8,
+    gap: 10,
   },
   summaryItem: {
     width: '48%',
-    padding: 8,
+    padding: 10,
     backgroundColor: '#fafafa',
     borderRadius: 4,
     borderLeftWidth: 3,
     borderLeftColor: colors.primary,
   },
   summaryTitle: {
-    fontSize: 9,
+    fontSize: 10,
     fontWeight: 600,
     color: colors.text,
-    marginBottom: 3,
+    marginBottom: 4,
   },
   summaryDesc: {
     fontSize: 8,
@@ -292,7 +340,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 3,
-    marginTop: 4,
+    marginTop: 5,
   },
   summaryKeyword: {
     fontSize: 7,
@@ -306,7 +354,7 @@ export const styles = StyleSheet.create({
   // Footer
   footer: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 25,
     left: 40,
     right: 40,
     textAlign: 'center',
@@ -318,6 +366,7 @@ export const styles = StyleSheet.create({
   bullet: {
     color: colors.primary,
     marginRight: 4,
+    fontSize: 8,
   },
   bulletItem: {
     flexDirection: 'row',
@@ -327,5 +376,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     fontSize: 8,
     color: colors.textSecondary,
+    lineHeight: 1.3,
   },
 })
