@@ -220,6 +220,30 @@
   /* Pulse animation delays for decorative elements */
   .delay-150 { animation-delay: 150ms; }
   .delay-300 { animation-delay: 300ms; }
+
+  /* Screen reader only - for accessibility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .not-sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
 }
 
 @keyframes fadeIn {
