@@ -6,6 +6,7 @@ import {
   KeySkillsSection,
   ExperienceSection,
   Footer,
+  PdfDownloadButton,
 } from '@/components'
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
 
         <Footer />
       </div>
+
+      {/* Floating PDF Download Button */}
+      <PdfDownloadButton />
     </div>
   )
 }

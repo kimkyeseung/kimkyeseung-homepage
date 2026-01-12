@@ -10,7 +10,6 @@ import {
   PROFILE_IMAGE_URL,
   INTRODUCTION,
 } from '@/constants'
-import { PdfDownloadButton } from './PdfDownloadButton'
 
 export function Header() {
   return (
@@ -95,11 +94,6 @@ export function Header() {
               <span>LinkedIn</span>
             </a>
           </nav>
-
-          {/* PDF Download Button */}
-          <div className="mt-4 animate-slide-up animation-delay-500 no-print">
-            <PdfDownloadButton />
-          </div>
         </div>
       </div>
     </header>
