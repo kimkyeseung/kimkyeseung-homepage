@@ -46,7 +46,7 @@ export function EducationSection() {
                 {edu.curriculums && edu.curriculums.length > 0 && (
                   <button
                     onClick={() => handleOpenDialog(edu)}
-                    className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
+                    className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 cursor-pointer"
                     aria-label={`${edu.name} 상세 보기`}
                   >
                     <FaPlus className="text-xs" />
