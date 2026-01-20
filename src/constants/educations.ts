@@ -5,7 +5,7 @@ export const EDUCATIONS: Education[] = [
     name: '클라우드 활용 네트워크 엔지니어 양성과정',
     joinedAt: '2024.12',
     seperatedAt: '2025.04',
-    isOngoing: true,
+    isOngoing: false,
     descriptions: [{ title: '에스넷그룹 클라우드 활용 네트워크 엔지니어 양성과정' }],
     curriculums: [
       {
