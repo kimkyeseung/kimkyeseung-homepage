@@ -45,6 +45,40 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.background,
     color: colors.text,
   },
+  // Page with flex layout (for page 2)
+  pageFlex: {
+    fontFamily: 'Pretendard',
+    fontSize: 10,
+    padding: 40,
+    backgroundColor: colors.background,
+    color: colors.text,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  // Content wrapper that fills remaining space
+  pageContent: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+  // Main experiences section
+  mainExperiencesSection: {
+    flex: 1,
+  },
+  // Previous experiences section at bottom
+  previousExperiencesSection: {
+    marginTop: 'auto',
+    paddingTop: 15,
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
+  },
+  previousSectionTitle: {
+    fontSize: 10,
+    fontWeight: 600,
+    color: colors.textSecondary,
+    marginBottom: 10,
+  },
 
   // Page Header (for page 2+)
   pageHeader: {
@@ -556,5 +590,15 @@ export const styles = StyleSheet.create({
     color: colors.textSecondary,
     marginBottom: 1,
     lineHeight: 1.3,
+  },
+
+  // Tech Tag Small (for previous experiences)
+  techTagSmall: {
+    fontSize: 6,
+    color: colors.textSecondary,
+    backgroundColor: '#f3f4f6',
+    paddingVertical: 1,
+    paddingHorizontal: 3,
+    borderRadius: 2,
   },
 })

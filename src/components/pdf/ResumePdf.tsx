@@ -158,73 +158,81 @@ export function ResumePdf() {
         </Text>
       </Page>
 
-      {/* Page 2: Work Experience */}
-      <Page size="A4" style={styles.page} wrap={false}>
+      {/* Page 2: Work Experience - Full A4 */}
+      <Page size="A4" style={styles.pageFlex} wrap={false}>
         {/* Page 2 Header */}
         <View style={styles.pageHeader}>
           <Text style={styles.pageHeaderName}>{NAME_EN}</Text>
           <Text style={styles.pageHeaderTitle}>Work Experience</Text>
         </View>
 
-        {/* Main Experiences - With Projects */}
-        {mainExperiences.map((exp, index) => (
-          <View key={index} style={styles.experienceItemCompact}>
-            <View style={styles.experienceHeaderCompact}>
-              <View style={styles.experienceHeaderLeft}>
-                <Text style={styles.experienceNameCompact}>{exp.name}</Text>
-                <Text style={styles.experienceRoleCompact}>{exp.role}</Text>
-              </View>
-              <Text style={styles.experiencePeriodCompact}>
-                {exp.joinedAt} - {exp.isOngoing ? '현재' : exp.seperatedAt}
-              </Text>
-            </View>
-
-            {exp.techs.length > 0 && (
-              <View style={styles.experienceTechsCompact}>
-                {exp.techs.slice(0, 5).map((tech, i) => (
-                  <Text key={i} style={styles.techTagCompact}>{tech}</Text>
-                ))}
-              </View>
-            )}
-
-            {exp.projects.length > 0 && (
-              <View style={styles.projectsContainerCompact}>
-                {exp.projects.slice(0, 3).map((project, i) => (
-                  <View key={i} style={styles.projectCompact}>
-                    <Text style={styles.projectTitleCompact}>{project.title}</Text>
-                    {project.impact && (
-                      <Text style={styles.projectImpactCompact}>✓ {project.impact}</Text>
-                    )}
+        {/* Content Wrapper - Fills remaining space */}
+        <View style={styles.pageContent}>
+          {/* Main Experiences Section */}
+          <View style={styles.mainExperiencesSection}>
+            {mainExperiences.map((exp, index) => (
+              <View key={index} style={styles.experienceItem}>
+                <View style={styles.experienceHeader}>
+                  <View style={styles.experienceHeaderLeft}>
+                    <Text style={styles.experienceName}>{exp.name}</Text>
+                    <Text style={styles.experienceRole}>{exp.role}</Text>
                   </View>
-                ))}
-              </View>
-            )}
-          </View>
-        ))}
+                  <Text style={styles.experiencePeriod}>
+                    {exp.joinedAt} - {exp.isOngoing ? '현재' : exp.seperatedAt}
+                  </Text>
+                </View>
 
-        {/* Previous Experiences - Minimal */}
-        <View style={styles.previousExperiencesRow}>
-          {previousExperiences.map((exp, index) => (
-            <View key={index} style={styles.previousExpItem}>
-              <View style={styles.previousExpHeader}>
-                <Text style={styles.previousExpName}>{exp.name}</Text>
-                <Text style={styles.previousExpPeriod}>
-                  {exp.joinedAt} - {exp.seperatedAt}
-                </Text>
+                {exp.techs.length > 0 && (
+                  <View style={styles.experienceTechs}>
+                    {exp.techs.slice(0, 6).map((tech, i) => (
+                      <Text key={i} style={styles.techTag}>{tech}</Text>
+                    ))}
+                  </View>
+                )}
+
+                {exp.projects.length > 0 && (
+                  <View style={styles.projectsContainer}>
+                    {exp.projects.slice(0, 4).map((project, i) => (
+                      <View key={i} style={styles.project}>
+                        <Text style={styles.projectTitle}>{project.title}</Text>
+                        {project.impact && (
+                          <Text style={styles.projectImpact}>✓ {project.impact}</Text>
+                        )}
+                      </View>
+                    ))}
+                  </View>
+                )}
               </View>
-              <Text style={styles.previousExpRole}>{exp.role}</Text>
-              <View style={styles.previousExpTechs}>
-                {exp.techs.slice(0, 4).map((tech, i) => (
-                  <Text key={i} style={styles.techTagCompact}>{tech}</Text>
-                ))}
-              </View>
-              {exp.projects.slice(0, 2).map((project, i) => (
-                <Text key={i} style={styles.previousExpProject}>
-                  • {project.title}{project.impact ? ` - ${project.impact}` : ''}
-                </Text>
+            ))}
+          </View>
+
+          {/* Previous Experiences Section - Bottom */}
+          <View style={styles.previousExperiencesSection}>
+            <Text style={styles.previousSectionTitle}>Previous Experience</Text>
+            <View style={styles.previousExperiencesRow}>
+              {previousExperiences.map((exp, index) => (
+                <View key={index} style={styles.previousExpItem}>
+                  <View style={styles.previousExpHeader}>
+                    <Text style={styles.previousExpName}>{exp.name}</Text>
+                    <Text style={styles.previousExpPeriod}>
+                      {exp.joinedAt} - {exp.seperatedAt}
+                    </Text>
+                  </View>
+                  <Text style={styles.previousExpRole}>{exp.role}</Text>
+                  <View style={styles.previousExpTechs}>
+                    {exp.techs.slice(0, 4).map((tech, i) => (
+                      <Text key={i} style={styles.techTagSmall}>{tech}</Text>
+                    ))}
+                  </View>
+                  {exp.projects.slice(0, 2).map((project, i) => (
+                    <Text key={i} style={styles.previousExpProject}>
+                      • {project.title}
+                    </Text>
+                  ))}
+                </View>
               ))}
             </View>
-          ))}
+          </View>
         </View>
 
         {/* Footer */}
