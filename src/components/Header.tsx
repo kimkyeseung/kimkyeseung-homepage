@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa'
+import { FaGithub, FaBehance, FaEnvelope, FaPhone } from 'react-icons/fa'
 import {
   NAME_EN,
   TITLE,
@@ -6,7 +6,7 @@ import {
   EMAIL,
   PHONE_NUMBER,
   GITHUB_URL,
-  LINKEDIN_URL,
+  BEHANCE_URL,
   PROFILE_IMAGE_URL,
   INTRODUCTION,
 } from '@/constants'
@@ -84,14 +84,14 @@ export function Header() {
               <span>GitHub</span>
             </a>
             <a
-              href={LINKEDIN_URL}
+              href={BEHANCE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-600 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300"
-              aria-label="LinkedIn 프로필 (새 창에서 열림)"
+              aria-label="Behance 포트폴리오 (새 창에서 열림)"
             >
-              <FaLinkedin className="text-lg" aria-hidden="true" />
-              <span>LinkedIn</span>
+              <FaBehance className="text-lg" aria-hidden="true" />
+              <span>Behance</span>
             </a>
           </nav>
         </div>

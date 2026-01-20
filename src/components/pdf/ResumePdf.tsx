@@ -5,7 +5,7 @@ import {
   EMAIL,
   PHONE_NUMBER,
   GITHUB_URL,
-  LINKEDIN_URL,
+  BEHANCE_URL,
   INTRODUCTION,
   EXPERIENCES,
   EDUCATIONS,
@@ -41,8 +41,8 @@ export function ResumePdf() {
               <Link src={GITHUB_URL} style={styles.contactItem}>
                 <Text style={styles.contactLink}>GitHub</Text>
               </Link>
-              <Link src={LINKEDIN_URL} style={styles.contactItem}>
-                <Text style={styles.contactLink}>LinkedIn</Text>
+              <Link src={BEHANCE_URL} style={styles.contactItem}>
+                <Text style={styles.contactLink}>Behance</Text>
               </Link>
             </View>
           </View>
