@@ -158,10 +158,10 @@ export function ResumePdf() {
         </Text>
       </Page>
 
-      {/* Page 2: Work Experience - Ultra Compact */}
-      <Page size="A4" style={styles.pageCompact} wrap={false}>
+      {/* Page 2: Work Experience */}
+      <Page size="A4" style={styles.page} wrap={false}>
         {/* Page 2 Header */}
-        <View style={styles.pageHeaderCompact}>
+        <View style={styles.pageHeader}>
           <Text style={styles.pageHeaderName}>{NAME_EN}</Text>
           <Text style={styles.pageHeaderTitle}>Work Experience</Text>
         </View>
