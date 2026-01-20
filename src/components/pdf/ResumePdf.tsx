@@ -15,6 +15,11 @@ import {
 import { styles } from './styles'
 
 export function ResumePdf() {
+  // 최근 4개 경력만 표시 (프리랜서, DeSpread, 위버, 아토머스)
+  const recentExperiences = EXPERIENCES.slice(0, 4)
+  // 나머지 경력 (부크크, IGAWorks)
+  const olderExperiences = EXPERIENCES.slice(4)
+
   return (
     <Document
       title={`${NAME_EN} - 이력서`}
@@ -158,75 +163,57 @@ export function ResumePdf() {
         </Text>
       </Page>
 
-      {/* Page 2: Work Experience */}
-      <Page size="A4" style={styles.page}>
+      {/* Page 2: Work Experience - Compact Layout */}
+      <Page size="A4" style={styles.pageCompact}>
         {/* Page 2 Header */}
-        <View style={styles.pageHeader}>
+        <View style={styles.pageHeaderCompact}>
           <Text style={styles.pageHeaderName}>{NAME_EN}</Text>
           <Text style={styles.pageHeaderTitle}>Work Experience</Text>
         </View>
 
-        {/* Work Experience - Full Page */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Work Experience</Text>
-          {EXPERIENCES.map((exp, index) => (
-            <View key={index} style={styles.experienceItem} wrap={false}>
-              <View style={styles.experienceHeader}>
+        {/* Work Experience - Compact */}
+        <View style={styles.sectionCompact}>
+          {recentExperiences.map((exp, index) => (
+            <View key={index} style={styles.experienceItemCompact}>
+              <View style={styles.experienceHeaderCompact}>
                 <View style={styles.experienceHeaderLeft}>
-                  <Text style={styles.experienceName}>{exp.name}</Text>
+                  <Text style={styles.experienceNameCompact}>{exp.name}</Text>
                   {exp.role && (
-                    <Text style={styles.experienceRole}>{exp.role}</Text>
-                  )}
-                  {exp.descriptions[0] && (
-                    <Text style={styles.experienceDesc}>
-                      {exp.descriptions[0].title}
-                    </Text>
+                    <Text style={styles.experienceRoleCompact}>{exp.role}</Text>
                   )}
                 </View>
-                <Text style={styles.experiencePeriod}>
+                <Text style={styles.experiencePeriodCompact}>
                   {exp.joinedAt} - {exp.isOngoing ? '현재' : exp.seperatedAt}
                 </Text>
               </View>
 
-              {/* Tech Stack */}
+              {/* Tech Stack - Inline */}
               {exp.techs.length > 0 && (
-                <View style={styles.experienceTechs}>
-                  {exp.techs.map((tech, i) => (
-                    <Text key={i} style={styles.techTag}>
+                <View style={styles.experienceTechsCompact}>
+                  {exp.techs.slice(0, 6).map((tech, i) => (
+                    <Text key={i} style={styles.techTagCompact}>
                       {tech}
                     </Text>
                   ))}
                 </View>
               )}
 
-              {/* Projects */}
+              {/* Projects - 3 Column Grid for more projects, 2 for fewer */}
               {exp.projects.length > 0 && (
-                <View style={styles.projectsContainer}>
-                  {exp.projects.map((project, i) => (
-                    <View key={i} style={styles.project}>
-                      <Text style={styles.projectTitle}>{project.title}</Text>
-                      {project.information && (
-                        <Text style={styles.projectInfo}>{project.information}</Text>
-                      )}
-                      {project.descriptions.map((desc, j) => (
-                        <View key={j} style={styles.bulletItem}>
-                          <Text style={styles.bullet}>•</Text>
-                          <Text style={styles.bulletText}>{desc}</Text>
+                <View style={styles.projectsContainerCompact}>
+                  {exp.projects.slice(0, 4).map((project, i) => (
+                    <View key={i} style={styles.projectCompact}>
+                      <Text style={styles.projectTitleCompact}>{project.title}</Text>
+                      {project.descriptions.slice(0, 2).map((desc, j) => (
+                        <View key={j} style={styles.bulletItemCompact}>
+                          <Text style={styles.bulletCompact}>•</Text>
+                          <Text style={styles.bulletTextCompact}>{desc}</Text>
                         </View>
                       ))}
                       {project.impact && (
-                        <Text style={styles.projectImpact}>
+                        <Text style={styles.projectImpactCompact}>
                           ✓ {project.impact}
                         </Text>
-                      )}
-                      {project.techs && project.techs.length > 0 && (
-                        <View style={styles.projectTechs}>
-                          {project.techs.map((tech, k) => (
-                            <Text key={k} style={styles.projectTechTag}>
-                              {tech}
-                            </Text>
-                          ))}
-                        </View>
                       )}
                     </View>
                   ))}
@@ -234,6 +221,50 @@ export function ResumePdf() {
               )}
             </View>
           ))}
+
+          {/* Older Experiences - Even more compact, single line each */}
+          {olderExperiences.length > 0 && (
+            <View style={styles.olderExperiencesSection}>
+              {olderExperiences.map((exp, index) => (
+                <View key={index} style={styles.experienceItemCompact}>
+                  <View style={styles.experienceHeaderCompact}>
+                    <View style={styles.experienceHeaderLeft}>
+                      <Text style={styles.experienceNameCompact}>{exp.name}</Text>
+                      {exp.role && (
+                        <Text style={styles.experienceRoleCompact}>{exp.role}</Text>
+                      )}
+                    </View>
+                    <Text style={styles.experiencePeriodCompact}>
+                      {exp.joinedAt} - {exp.isOngoing ? '현재' : exp.seperatedAt}
+                    </Text>
+                  </View>
+                  {exp.techs.length > 0 && (
+                    <View style={styles.experienceTechsCompact}>
+                      {exp.techs.slice(0, 6).map((tech, i) => (
+                        <Text key={i} style={styles.techTagCompact}>
+                          {tech}
+                        </Text>
+                      ))}
+                    </View>
+                  )}
+                  {exp.projects.length > 0 && (
+                    <View style={styles.projectsContainerCompact}>
+                      {exp.projects.slice(0, 3).map((project, i) => (
+                        <View key={i} style={styles.projectCompact}>
+                          <Text style={styles.projectTitleCompact}>{project.title}</Text>
+                          {project.impact && (
+                            <Text style={styles.projectImpactCompact}>
+                              ✓ {project.impact}
+                            </Text>
+                          )}
+                        </View>
+                      ))}
+                    </View>
+                  )}
+                </View>
+              ))}
+            </View>
+          )}
         </View>
 
         {/* Footer */}

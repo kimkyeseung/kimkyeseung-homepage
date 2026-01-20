@@ -392,4 +392,121 @@ export const styles = StyleSheet.create({
     color: colors.textSecondary,
     lineHeight: 1.3,
   },
+
+  // ========== Compact Styles for Page 2 ==========
+  pageCompact: {
+    fontFamily: 'Pretendard',
+    fontSize: 8,
+    padding: 25,
+    paddingBottom: 40,
+    backgroundColor: colors.background,
+    color: colors.text,
+  },
+  pageHeaderCompact: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+    paddingBottom: 6,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  sectionCompact: {
+    marginBottom: 0,
+  },
+
+  // Experience Compact
+  experienceItemCompact: {
+    marginBottom: 10,
+    paddingBottom: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  experienceHeaderCompact: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 3,
+  },
+  experienceNameCompact: {
+    fontSize: 10,
+    fontWeight: 700,
+    color: colors.text,
+  },
+  experienceRoleCompact: {
+    fontSize: 8,
+    fontWeight: 500,
+    color: colors.primary,
+  },
+  experiencePeriodCompact: {
+    fontSize: 7,
+    fontWeight: 500,
+    color: colors.textLight,
+    backgroundColor: colors.accent,
+    paddingVertical: 2,
+    paddingHorizontal: 6,
+    borderRadius: 3,
+  },
+  experienceTechsCompact: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 3,
+    marginBottom: 5,
+  },
+  techTagCompact: {
+    fontSize: 6,
+    color: colors.textSecondary,
+    backgroundColor: '#f3f4f6',
+    paddingVertical: 1,
+    paddingHorizontal: 4,
+    borderRadius: 2,
+  },
+
+  // Projects Compact
+  projectsContainerCompact: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+  },
+  projectCompact: {
+    width: '48%',
+    marginBottom: 2,
+    paddingLeft: 6,
+    borderLeftWidth: 2,
+    borderLeftColor: colors.accent,
+  },
+  projectTitleCompact: {
+    fontSize: 8,
+    fontWeight: 600,
+    color: colors.text,
+    marginBottom: 1,
+  },
+  projectImpactCompact: {
+    fontSize: 7,
+    fontWeight: 500,
+    color: colors.success,
+    marginTop: 2,
+  },
+
+  // Bullet Compact
+  bulletCompact: {
+    color: colors.primary,
+    marginRight: 3,
+    fontSize: 7,
+  },
+  bulletItemCompact: {
+    flexDirection: 'row',
+    marginBottom: 1,
+  },
+  bulletTextCompact: {
+    flex: 1,
+    fontSize: 7,
+    color: colors.textSecondary,
+    lineHeight: 1.2,
+  },
+
+  // Older Experiences Section
+  olderExperiencesSection: {
+    marginTop: 4,
+  },
 })
