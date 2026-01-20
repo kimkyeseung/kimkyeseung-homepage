@@ -509,4 +509,52 @@ export const styles = StyleSheet.create({
   olderExperiencesSection: {
     marginTop: 4,
   },
+
+  // Previous Experiences - 3 Column Row
+  previousExperiencesRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginTop: 6,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
+  },
+  previousExpItem: {
+    flex: 1,
+    padding: 6,
+    backgroundColor: '#fafafa',
+    borderRadius: 4,
+  },
+  previousExpHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 2,
+  },
+  previousExpName: {
+    fontSize: 8,
+    fontWeight: 700,
+    color: colors.text,
+  },
+  previousExpPeriod: {
+    fontSize: 6,
+    color: colors.textLight,
+  },
+  previousExpRole: {
+    fontSize: 7,
+    color: colors.primary,
+    marginBottom: 3,
+  },
+  previousExpTechs: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 2,
+    marginBottom: 4,
+  },
+  previousExpProject: {
+    fontSize: 6,
+    color: colors.textSecondary,
+    marginBottom: 1,
+    lineHeight: 1.3,
+  },
 })

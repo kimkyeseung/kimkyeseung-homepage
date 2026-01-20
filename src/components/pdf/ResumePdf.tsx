@@ -15,10 +15,10 @@ import {
 import { styles } from './styles'
 
 export function ResumePdf() {
-  // 최근 4개 경력만 표시 (프리랜서, DeSpread, 위버, 아토머스)
-  const recentExperiences = EXPERIENCES.slice(0, 4)
-  // 나머지 경력 (부크크, IGAWorks)
-  const olderExperiences = EXPERIENCES.slice(4)
+  // 주요 경력 3개 (프리랜서, DeSpread, 위버)
+  const mainExperiences = EXPERIENCES.slice(0, 3)
+  // 이전 경력 (아토머스, 부크크, IGAWorks) - 간략히
+  const previousExperiences = EXPERIENCES.slice(3)
 
   return (
     <Document
@@ -63,7 +63,7 @@ export function ResumePdf() {
                 <Text style={styles.summaryDesc}>{summary.description}</Text>
                 {summary.keywords && (
                   <View style={styles.summaryKeywords}>
-                    {summary.keywords.slice(0, 4).map((keyword, i) => (
+                    {summary.keywords.slice(0, 3).map((keyword, i) => (
                       <Text key={i} style={styles.summaryKeyword}>
                         {keyword}
                       </Text>
@@ -98,7 +98,7 @@ export function ResumePdf() {
                 <View style={styles.skillCategory}>
                   <Text style={styles.skillCategoryTitle}>Frontend</Text>
                   <View style={styles.skillTags}>
-                    {['React', 'Next.js', 'Vue.js', 'TypeScript', 'Tailwind CSS', 'Styled Components'].map(
+                    {['React', 'Next.js', 'Vue.js', 'TypeScript', 'Tailwind CSS'].map(
                       (skill, index) => (
                         <Text key={index} style={styles.skillTag}>
                           {skill}
@@ -110,7 +110,7 @@ export function ResumePdf() {
                 <View style={styles.skillCategory}>
                   <Text style={styles.skillCategoryTitle}>Backend</Text>
                   <View style={styles.skillTags}>
-                    {['Node.js', 'Express', 'Python', 'Flask', 'MongoDB', 'MySQL'].map(
+                    {['Node.js', 'Express', 'Python', 'MongoDB', 'MySQL'].map(
                       (skill, index) => (
                         <Text key={index} style={styles.skillTag}>
                           {skill}
@@ -120,9 +120,9 @@ export function ResumePdf() {
                   </View>
                 </View>
                 <View style={styles.skillCategory}>
-                  <Text style={styles.skillCategoryTitle}>DevOps & Tools</Text>
+                  <Text style={styles.skillCategoryTitle}>DevOps</Text>
                   <View style={styles.skillTags}>
-                    {['Git', 'Docker', 'AWS', 'Storybook', 'Figma', 'Jira'].map(
+                    {['Git', 'Docker', 'AWS', 'Storybook'].map(
                       (skill, index) => (
                         <Text key={index} style={styles.skillTag}>
                           {skill}
@@ -146,11 +146,6 @@ export function ResumePdf() {
                   <Text style={styles.educationPeriod}>
                     {edu.joinedAt} - {edu.isOngoing ? '진행 중' : edu.seperatedAt}
                   </Text>
-                  {edu.descriptions.map((desc, i) => (
-                    <Text key={i} style={styles.educationDesc}>
-                      {desc.title}
-                    </Text>
-                  ))}
                 </View>
               ))}
             </View>
@@ -163,108 +158,73 @@ export function ResumePdf() {
         </Text>
       </Page>
 
-      {/* Page 2: Work Experience - Compact Layout */}
-      <Page size="A4" style={styles.pageCompact}>
+      {/* Page 2: Work Experience - Ultra Compact */}
+      <Page size="A4" style={styles.pageCompact} wrap={false}>
         {/* Page 2 Header */}
         <View style={styles.pageHeaderCompact}>
           <Text style={styles.pageHeaderName}>{NAME_EN}</Text>
           <Text style={styles.pageHeaderTitle}>Work Experience</Text>
         </View>
 
-        {/* Work Experience - Compact */}
-        <View style={styles.sectionCompact}>
-          {recentExperiences.map((exp, index) => (
-            <View key={index} style={styles.experienceItemCompact}>
-              <View style={styles.experienceHeaderCompact}>
-                <View style={styles.experienceHeaderLeft}>
-                  <Text style={styles.experienceNameCompact}>{exp.name}</Text>
-                  {exp.role && (
-                    <Text style={styles.experienceRoleCompact}>{exp.role}</Text>
-                  )}
-                </View>
-                <Text style={styles.experiencePeriodCompact}>
-                  {exp.joinedAt} - {exp.isOngoing ? '현재' : exp.seperatedAt}
+        {/* Main Experiences - With Projects */}
+        {mainExperiences.map((exp, index) => (
+          <View key={index} style={styles.experienceItemCompact}>
+            <View style={styles.experienceHeaderCompact}>
+              <View style={styles.experienceHeaderLeft}>
+                <Text style={styles.experienceNameCompact}>{exp.name}</Text>
+                <Text style={styles.experienceRoleCompact}>{exp.role}</Text>
+              </View>
+              <Text style={styles.experiencePeriodCompact}>
+                {exp.joinedAt} - {exp.isOngoing ? '현재' : exp.seperatedAt}
+              </Text>
+            </View>
+
+            {exp.techs.length > 0 && (
+              <View style={styles.experienceTechsCompact}>
+                {exp.techs.slice(0, 5).map((tech, i) => (
+                  <Text key={i} style={styles.techTagCompact}>{tech}</Text>
+                ))}
+              </View>
+            )}
+
+            {exp.projects.length > 0 && (
+              <View style={styles.projectsContainerCompact}>
+                {exp.projects.slice(0, 3).map((project, i) => (
+                  <View key={i} style={styles.projectCompact}>
+                    <Text style={styles.projectTitleCompact}>{project.title}</Text>
+                    {project.impact && (
+                      <Text style={styles.projectImpactCompact}>✓ {project.impact}</Text>
+                    )}
+                  </View>
+                ))}
+              </View>
+            )}
+          </View>
+        ))}
+
+        {/* Previous Experiences - Minimal */}
+        <View style={styles.previousExperiencesRow}>
+          {previousExperiences.map((exp, index) => (
+            <View key={index} style={styles.previousExpItem}>
+              <View style={styles.previousExpHeader}>
+                <Text style={styles.previousExpName}>{exp.name}</Text>
+                <Text style={styles.previousExpPeriod}>
+                  {exp.joinedAt} - {exp.seperatedAt}
                 </Text>
               </View>
-
-              {/* Tech Stack - Inline */}
-              {exp.techs.length > 0 && (
-                <View style={styles.experienceTechsCompact}>
-                  {exp.techs.slice(0, 6).map((tech, i) => (
-                    <Text key={i} style={styles.techTagCompact}>
-                      {tech}
-                    </Text>
-                  ))}
-                </View>
-              )}
-
-              {/* Projects - 3 Column Grid for more projects, 2 for fewer */}
-              {exp.projects.length > 0 && (
-                <View style={styles.projectsContainerCompact}>
-                  {exp.projects.slice(0, 4).map((project, i) => (
-                    <View key={i} style={styles.projectCompact}>
-                      <Text style={styles.projectTitleCompact}>{project.title}</Text>
-                      {project.descriptions.slice(0, 2).map((desc, j) => (
-                        <View key={j} style={styles.bulletItemCompact}>
-                          <Text style={styles.bulletCompact}>•</Text>
-                          <Text style={styles.bulletTextCompact}>{desc}</Text>
-                        </View>
-                      ))}
-                      {project.impact && (
-                        <Text style={styles.projectImpactCompact}>
-                          ✓ {project.impact}
-                        </Text>
-                      )}
-                    </View>
-                  ))}
-                </View>
-              )}
-            </View>
-          ))}
-
-          {/* Older Experiences - Even more compact, single line each */}
-          {olderExperiences.length > 0 && (
-            <View style={styles.olderExperiencesSection}>
-              {olderExperiences.map((exp, index) => (
-                <View key={index} style={styles.experienceItemCompact}>
-                  <View style={styles.experienceHeaderCompact}>
-                    <View style={styles.experienceHeaderLeft}>
-                      <Text style={styles.experienceNameCompact}>{exp.name}</Text>
-                      {exp.role && (
-                        <Text style={styles.experienceRoleCompact}>{exp.role}</Text>
-                      )}
-                    </View>
-                    <Text style={styles.experiencePeriodCompact}>
-                      {exp.joinedAt} - {exp.isOngoing ? '현재' : exp.seperatedAt}
-                    </Text>
-                  </View>
-                  {exp.techs.length > 0 && (
-                    <View style={styles.experienceTechsCompact}>
-                      {exp.techs.slice(0, 6).map((tech, i) => (
-                        <Text key={i} style={styles.techTagCompact}>
-                          {tech}
-                        </Text>
-                      ))}
-                    </View>
-                  )}
-                  {exp.projects.length > 0 && (
-                    <View style={styles.projectsContainerCompact}>
-                      {exp.projects.slice(0, 3).map((project, i) => (
-                        <View key={i} style={styles.projectCompact}>
-                          <Text style={styles.projectTitleCompact}>{project.title}</Text>
-                          {project.impact && (
-                            <Text style={styles.projectImpactCompact}>
-                              ✓ {project.impact}
-                            </Text>
-                          )}
-                        </View>
-                      ))}
-                    </View>
-                  )}
-                </View>
+              <Text style={styles.previousExpRole}>{exp.role}</Text>
+              <View style={styles.previousExpTechs}>
+                {exp.techs.slice(0, 4).map((tech, i) => (
+                  <Text key={i} style={styles.techTagCompact}>{tech}</Text>
+                ))}
+              </View>
+              {exp.projects.slice(0, 2).map((project, i) => (
+                <Text key={i} style={styles.previousExpProject}>
+                  • {project.title}{project.impact ? ` - ${project.impact}` : ''}
+                </Text>
               ))}
             </View>
-          )}
+          ))}
         </View>
 
         {/* Footer */}
