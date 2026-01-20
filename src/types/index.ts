@@ -25,6 +25,7 @@ export interface ProjectDescription {
   information?: string
   url?: string
   impact?: string
+  techs?: string[]
 }
 
 export interface ExperienceDescription {

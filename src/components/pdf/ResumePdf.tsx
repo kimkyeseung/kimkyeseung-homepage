@@ -219,6 +219,15 @@ export function ResumePdf() {
                           ✓ {project.impact}
                         </Text>
                       )}
+                      {project.techs && project.techs.length > 0 && (
+                        <View style={styles.projectTechs}>
+                          {project.techs.map((tech, k) => (
+                            <Text key={k} style={styles.projectTechTag}>
+                              {tech}
+                            </Text>
+                          ))}
+                        </View>
+                      )}
                     </View>
                   ))}
                 </View>

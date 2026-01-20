@@ -18,6 +18,42 @@ export const EXPERIENCES: Experience[] = [
     isOngoing: true,
     projects: [
       {
+        title: 'AR 콘텐츠 제작 도구',
+        information: 'Viswave - 이미지 기반 AR 콘텐츠 생성 웹 애플리케이션',
+        descriptions: [
+          'MindAR + Three.js + A-Frame 기반 AR 뷰어 개발',
+          'FFmpeg/WebCodecs를 활용한 브라우저 내 비디오 처리',
+          'NestJS + Prisma + Google Cloud Storage 기반 백엔드 구축',
+          'QR 코드 생성 및 AR 콘텐츠 배포 시스템 구현',
+        ],
+        impact: '비개발자도 AR 콘텐츠 제작 가능한 노코드 플랫폼',
+        techs: ['React', 'MindAR', 'Three.js', 'A-Frame', 'NestJS', 'Prisma', 'GCS'],
+      },
+      {
+        title: 'VRM 아바타 모션 캡처 앱',
+        information: 'Viswave - 웹캠 기반 실시간 VRM 아바타 제어 데스크톱 앱',
+        descriptions: [
+          'MediaPipe + Kalidokit으로 얼굴/신체 모션 인식 및 추적',
+          '@pixiv/three-vrm을 활용한 VRM 아바타 렌더링',
+          'Tauri 기반 크로스플랫폼 데스크톱 앱 개발',
+          '커스텀 배경, 이펙트, 배너 등 미디어 관리 기능 구현',
+        ],
+        impact: '실시간 모션 캡처로 VTuber 방송 및 교육용 콘텐츠 제작 지원',
+        techs: ['React', 'MediaPipe', 'Kalidokit', 'Three.js', 'Tauri', 'IndexedDB'],
+      },
+      {
+        title: '인터랙티브 튜토리얼 제작 도구',
+        information: 'Viswave - 터치스크린 교육용 튜토리얼 제작 앱',
+        descriptions: [
+          'Tauri + React 기반 데스크톱 앱 개발',
+          '@dnd-kit을 활용한 드래그 앤 드롭 UI 구현',
+          '튜토리얼 스텝별 인터랙션 정의 및 내보내기 기능',
+          'Monorepo 구조로 Maker/Player 앱 통합 관리',
+        ],
+        impact: '비개발자도 인터랙티브 교육 콘텐츠 제작 가능',
+        techs: ['React', 'Tauri', 'dnd-kit', 'TypeScript', 'Monorepo'],
+      },
+      {
         title: '클라우드/인프라 역량 강화',
         descriptions: [
           'AWS, Docker, Kubernetes 기반 인프라 학습 및 실습',

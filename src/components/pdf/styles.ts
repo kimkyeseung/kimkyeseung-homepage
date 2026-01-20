@@ -310,6 +310,20 @@ export const styles = StyleSheet.create({
     color: colors.success,
     marginTop: 3,
   },
+  projectTechs: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 3,
+    marginTop: 4,
+  },
+  projectTechTag: {
+    fontSize: 7,
+    color: colors.primary,
+    backgroundColor: colors.accent,
+    paddingVertical: 1,
+    paddingHorizontal: 4,
+    borderRadius: 2,
+  },
 
   // Summary
   summaryGrid: {

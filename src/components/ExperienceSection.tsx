@@ -89,6 +89,18 @@ export function ExperienceSection() {
                             </span>
                           </div>
                         )}
+                        {project.techs && project.techs.length > 0 && (
+                          <div className="flex flex-wrap gap-1 mt-2">
+                            {project.techs.map((tech, k) => (
+                              <span
+                                key={k}
+                                className="text-xs px-2 py-0.5 bg-blue-50 text-blue-600 rounded-full"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
