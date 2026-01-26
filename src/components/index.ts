@@ -1,9 +1,15 @@
 export { Header } from './Header'
+export { HeroSection } from './HeroSection'
+export { WorkSection } from './WorkSection'
+export { ResumeSection } from './ResumeSection'
+export { ContactSection } from './ContactSection'
+export { Footer } from './Footer'
+export { PdfDownloadButton } from './PdfDownloadButton'
+export { Dialog } from './Dialog'
+
+// Legacy components (can be removed if not needed)
 export { AboutSection } from './AboutSection'
 export { EducationSection } from './EducationSection'
 export { TechStackSection } from './TechStackSection'
 export { KeySkillsSection } from './KeySkillsSection'
 export { ExperienceSection } from './ExperienceSection'
-export { Footer } from './Footer'
-export { PdfDownloadButton } from './PdfDownloadButton'
-export { Dialog } from './Dialog'
