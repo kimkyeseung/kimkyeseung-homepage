@@ -1,99 +1,114 @@
-import { FaGithub, FaBehance, FaEnvelope, FaPhone } from 'react-icons/fa'
-import {
-  NAME_EN,
-  TITLE,
-  SUB_TITLE,
-  EMAIL,
-  PHONE_NUMBER,
-  GITHUB_URL,
-  BEHANCE_URL,
-  PROFILE_IMAGE_URL,
-  INTRODUCTION,
-} from '@/constants'
+import { NAME_EN, EMAIL } from '@/constants'
+import { useDarkMode } from '@/hooks/useDarkMode'
+
+// Logo SVG Component
+function Logo() {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      fill="currentColor"
+      className="size-8"
+      aria-hidden="true"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
+      />
+    </svg>
+  )
+}
+
+// Sun Icon
+function SunIcon() {
+  return (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+  )
+}
+
+// Moon Icon
+function MoonIcon() {
+  return (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+    </svg>
+  )
+}
 
 export function Header() {
+  const { isDark, toggle } = useDarkMode()
+
   return (
-    <header className="card mb-8 animate-fade-in !overflow-visible !p-8" role="banner">
-      <div className="flex flex-col md:flex-row items-center gap-10">
-        {/* Profile Image with Enhanced Decorations */}
-        <div className="relative flex-shrink-0 group ml-6 mt-6">
-          {/* Outer glow effect */}
-          <div className="absolute inset-0 w-52 h-52 -top-2 -left-2 bg-gradient-to-br from-blue-400/30 to-purple-400/30 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" aria-hidden="true" />
-
-          {/* Decorative shapes */}
-          <div className="absolute w-48 h-48 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl rotate-6 top-1 left-1 opacity-90 group-hover:rotate-12 transition-transform duration-500" aria-hidden="true" />
-          <div className="absolute w-48 h-48 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl -rotate-6 -top-1 -left-1 opacity-90 group-hover:-rotate-12 transition-transform duration-500" aria-hidden="true" />
-
-          {/* Accent dots - static for professional look */}
-          <div className="absolute -top-3 -right-3 w-6 h-6 bg-blue-500/80 rounded-full" aria-hidden="true" />
-          <div className="absolute -bottom-2 -left-3 w-4 h-4 bg-purple-400/80 rounded-full" aria-hidden="true" />
-          <div className="absolute top-1/2 -right-4 w-3 h-3 bg-blue-400/80 rounded-full" aria-hidden="true" />
-
-          {/* Main image */}
-          <img
-            src={PROFILE_IMAGE_URL}
-            alt="김계승 프론트엔드 개발자 프로필 사진"
-            className="w-48 h-48 object-cover rounded-2xl relative z-10 border-4 border-white shadow-2xl group-hover:scale-105 transition-transform duration-500"
-          />
+    <header className="sticky top-0 z-50 w-full border-b border-[var(--color-border)] bg-[var(--color-background)]/80 backdrop-blur-md">
+      <div className="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo & Name */}
+        <div className="flex items-center gap-3">
+          <div className="text-[var(--color-primary)]">
+            <Logo />
+          </div>
+          <h2 className="text-lg font-bold tracking-tight">{NAME_EN}</h2>
         </div>
 
-        {/* Info */}
-        <div className="flex-1 text-center md:text-left">
-          <h1 className="text-4xl font-bold text-gray-800 mb-1 animate-slide-up">
-            {NAME_EN}
-          </h1>
-          <p className="text-gray-500 text-base mb-3 animate-slide-up animation-delay-100">
-            6년차 프론트엔드 개발자
-          </p>
-          <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4 animate-slide-up animation-delay-200">
-            <span className="px-4 py-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full font-medium shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all duration-300">
-              {TITLE}
-            </span>
-            <span className="px-4 py-1 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full font-medium text-sm shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-0.5 transition-all duration-300">
-              {SUB_TITLE}
-            </span>
-          </div>
-          <p className="text-gray-600 mb-4 max-w-xl text-sm leading-relaxed animate-slide-up animation-delay-300">
-            {INTRODUCTION}
-          </p>
+        {/* Navigation */}
+        <nav className="hidden md:flex items-center gap-8" aria-label="메인 네비게이션">
+          <a
+            href="#work"
+            className="text-sm font-medium hover:text-[var(--color-primary)] transition-colors"
+          >
+            Work
+          </a>
+          <a
+            href="#resume"
+            className="text-sm font-medium hover:text-[var(--color-primary)] transition-colors"
+          >
+            Resume
+          </a>
+          <a
+            href="#contact"
+            className="text-sm font-medium hover:text-[var(--color-primary)] transition-colors"
+          >
+            Contact
+          </a>
 
-          {/* Contact Info */}
-          <nav className="flex flex-wrap justify-center md:justify-start gap-4 text-sm animate-slide-up animation-delay-400" aria-label="연락처">
-            <a
-              href={`mailto:${EMAIL}`}
-              className="flex items-center gap-2 text-gray-600 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <FaEnvelope className="text-lg" aria-hidden="true" />
-              <span>{EMAIL}</span>
-            </a>
-            <a
-              href={`tel:${PHONE_NUMBER}`}
-              className="flex items-center gap-2 text-gray-600 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <FaPhone className="text-lg" aria-hidden="true" />
-              <span>{PHONE_NUMBER}</span>
-            </a>
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-600 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300"
-              aria-label="GitHub 프로필 (새 창에서 열림)"
-            >
-              <FaGithub className="text-lg" aria-hidden="true" />
-              <span>GitHub</span>
-            </a>
-            <a
-              href={BEHANCE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-600 hover:text-blue-600 hover:-translate-y-0.5 transition-all duration-300"
-              aria-label="Behance 포트폴리오 (새 창에서 열림)"
-            >
-              <FaBehance className="text-lg" aria-hidden="true" />
-              <span>Behance</span>
-            </a>
-          </nav>
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={toggle}
+            className="p-2 rounded-lg hover:bg-[var(--color-border)] transition-colors"
+            aria-label={isDark ? '라이트 모드로 전환' : '다크 모드로 전환'}
+          >
+            {isDark ? <SunIcon /> : <MoonIcon />}
+          </button>
+
+          <a
+            href={`mailto:${EMAIL}`}
+            className="bg-[var(--color-primary)] text-white px-5 py-2 rounded-lg text-sm font-bold hover:opacity-90 transition-opacity"
+          >
+            Hire Me
+          </a>
+        </nav>
+
+        {/* Mobile Menu */}
+        <div className="flex items-center gap-2 md:hidden">
+          {/* Dark Mode Toggle (Mobile) */}
+          <button
+            onClick={toggle}
+            className="p-2 rounded-lg hover:bg-[var(--color-border)] transition-colors"
+            aria-label={isDark ? '라이트 모드로 전환' : '다크 모드로 전환'}
+          >
+            {isDark ? <SunIcon /> : <MoonIcon />}
+          </button>
+
+          {/* Menu Button */}
+          <button
+            className="p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+            aria-label="메뉴 열기"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
       </div>
     </header>
