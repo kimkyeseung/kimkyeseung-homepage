@@ -59,6 +59,14 @@ npm run dev
 - `resume://summaries`
 - `resume://projects`
 
-## 데이터 갱신
+## 데이터 갱신 (자동 동기화)
 
-이 서버는 웹사이트(`src/constants`)의 이력서 데이터를 `src/data/*.ts`에 별도로 보관합니다(React/JSX 의존성 없는 순수 데이터). 홈페이지의 `src/constants` 내용을 수정했다면, 동일한 변경 사항을 `mcp-server/src/data`에도 반영한 뒤 `npm run build`로 다시 빌드하세요.
+`src/constants`가 유일한 원본(source of truth)입니다. `mcp-server/src/data/*.ts`는 손으로 유지보수하는 파일이 아니라, `scripts/sync-resume-data.ts`가 `src/constants`를 파싱해서 **자동 생성**하는 파일입니다(React/JSX 의존성 없는 순수 데이터로 변환). `npm run build`와 `npm run dev`는 항상 이 동기화를 먼저 실행하므로, 별도 스크립트를 신경 쓸 필요 없이:
+
+1. 홈페이지 `src/constants`에서 이력서 내용을 수정
+2. `cd mcp-server && npm run build`
+3. Claude Desktop 재시작(또는 새 대화 시작)
+
+만 하면 MCP 서버에도 최신 이력서 내용이 반영됩니다. 동기화만 다시 돌리고 싶다면 `npm run sync`를 실행하면 됩니다.
+
+`mcp-server/src/data/*.ts` 파일은 생성 결과물이라 직접 수정해도 다음 `npm run sync`/`build`에서 덮어써집니다.

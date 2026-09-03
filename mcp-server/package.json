@@ -11,8 +11,9 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsx src/index.ts",
-    "build": "tsc -b",
+    "sync": "tsx scripts/sync-resume-data.ts",
+    "dev": "npm run sync && tsx src/index.ts",
+    "build": "npm run sync && tsc -b",
     "start": "node dist/index.js",
     "inspect": "npx @modelcontextprotocol/inspector node dist/index.js"
   },
