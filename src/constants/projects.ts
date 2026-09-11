@@ -9,6 +9,13 @@ export interface Project {
 
 export const FEATURED_PROJECTS: Project[] = [
   {
+    title: 'AR 포토부스 키오스크 (AR-Pic)',
+    category: 'Kiosk · AI/Desktop App',
+    description:
+      'Windows 전용 AI 포토부스 데스크톱 앱. MediaPipe 기반 실시간 배경 제거, QR 사진 공유, 카드 결제까지 지원하며 실제 매장에 상용 배포.',
+    techs: ['Next.js', 'Tauri', 'MediaPipe', 'Supabase'],
+  },
+  {
     title: 'AR 콘텐츠 제작 도구',
     category: 'Web App · AR/VR',
     description: 'MindAR + Three.js 기반 AR 콘텐츠 생성 웹 애플리케이션. 비개발자도 AR 콘텐츠 제작 가능한 노코드 플랫폼.',
