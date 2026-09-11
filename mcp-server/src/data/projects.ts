@@ -52,5 +52,38 @@ export const FEATURED_PROJECTS: Project[] = [
       "Sendbird",
       "WebRTC"
     ]
+  },
+  {
+    "title": "Dice Art",
+    "category": "Web App · Creative Tool",
+    "description": "업로드한 이미지를 주사위 모자이크 아트로 변환하는 웹 앱. 이미지를 그리드로 분석해 셀별 목표 주사위 값을 계산하고, Canvas 기반 드로잉으로 직접 채워 완성. 대형 그리드 섹션 네비게이션과 완성작 갤러리 제공.",
+    "techs": [
+      "Next.js",
+      "Canvas",
+      "Prisma",
+      "PostgreSQL"
+    ]
+  },
+  {
+    "title": "Lotto Simulator",
+    "category": "Web App · Full Stack",
+    "description": "로또 번호 생성, 당첨 시뮬레이션, 통계 분석을 제공하는 웹 애플리케이션. TanStack Router 기반 SPA와 Hono API 서버, Neon PostgreSQL을 활용했으며 댓글/좋아요 커뮤니티 기능을 포함.",
+    "techs": [
+      "React",
+      "TanStack Router",
+      "Hono",
+      "Drizzle ORM"
+    ]
+  },
+  {
+    "title": "Mocktrader",
+    "category": "Web App · Fintech",
+    "description": "모의 주식 트레이딩 시뮬레이터. ECharts 기반 차트 시각화로 거래 흐름을 확인하고, 거래 내역을 PDF 리포트로 내보낼 수 있는 도메인 주도 설계 구조의 웹 앱.",
+    "techs": [
+      "React",
+      "Zustand",
+      "ECharts",
+      "@react-pdf/renderer"
+    ]
   }
 ]
