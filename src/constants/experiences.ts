@@ -54,6 +54,19 @@ export const EXPERIENCES: Experience[] = [
         techs: ['React', 'Tauri', 'dnd-kit', 'TypeScript', 'Monorepo'],
       },
       {
+        title: 'AR 포토부스 키오스크 앱 (AR-Pic)',
+        information: 'Viswave - Windows 전용 AI 포토부스 데스크톱 애플리케이션',
+        descriptions: [
+          'Next.js(App Router) + Tauri 기반 Windows 데스크톱 앱 개발',
+          'MediaPipe 기반 실시간 AI 배경 제거(셀피 세그멘테이션) 구현',
+          '프레임 레이아웃, 스티커 오버레이, QR코드 기반 디지털 사진 공유 기능 개발',
+          'PayApp 카드 결제 연동 및 프린터 인쇄 시스템 구축',
+          'Supabase + Prisma 기반 백엔드 및 다지점 관리자 패널 개발',
+        ],
+        impact: '무인 포토부스 키오스크로 실제 매장에 상용 배포',
+        techs: ['Next.js', 'React', 'Tauri', 'MediaPipe', 'Supabase', 'Prisma', 'TypeScript'],
+      },
+      {
         title: '클라우드/인프라 역량 강화',
         descriptions: [
           'AWS, Docker, Kubernetes 기반 인프라 학습 및 실습',
