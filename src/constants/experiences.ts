@@ -66,15 +66,6 @@ export const EXPERIENCES: Experience[] = [
         impact: '무인 포토부스 키오스크로 실제 매장에 상용 배포',
         techs: ['Next.js', 'React', 'Tauri', 'MediaPipe', 'Supabase', 'Prisma', 'TypeScript'],
       },
-      {
-        title: '클라우드/인프라 역량 강화',
-        descriptions: [
-          'AWS, Docker, Kubernetes 기반 인프라 학습 및 실습',
-          '네트워크 기초 및 서버 운영 역량 확보',
-          'DevOps 파이프라인 구축 경험',
-        ],
-        impact: '풀스택 개발자로서의 역량 확장',
-      },
     ],
   },
   {
@@ -185,7 +176,7 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    name: '아토머스 (Atomus)',
+    name: '아토머스 (Atommerce)',
     role: 'Frontend Developer',
     descriptions: [
       {
