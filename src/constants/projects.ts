@@ -63,4 +63,11 @@ export const FEATURED_PROJECTS: Project[] = [
       '모의 주식 트레이딩 시뮬레이터. ECharts 기반 차트 시각화로 거래 흐름을 확인하고, 거래 내역을 PDF 리포트로 내보낼 수 있는 도메인 주도 설계 구조의 웹 앱.',
     techs: ['React', 'Zustand', 'ECharts', '@react-pdf/renderer'],
   },
+  {
+    title: '김계승 일본어',
+    category: 'Web App · On-device AI · PWA',
+    description:
+      '서버 없이 브라우저 안에서 도는 온디바이스 AI 일본어 학습 웹앱. Chrome 내장 Prompt API와 WebGPU 기반 Gemma 4(2GB 모델 OPFS 이어받기 다운로드)를 갈아끼우는 이중 엔진 구조로 회화·작문 첨삭·AI 선생님을 제공하고, 사전·한자·획순은 JMDict/KANJIDIC/KanjiVG 가공 데이터로 처리. 프롬프트 인젝션 4중 방어, SRS 복습, 한자 쓰기 채점, 오프라인 PWA 지원.',
+    techs: ['React', 'TypeScript', 'WebGPU', 'LiteRT-LM', 'Zustand', 'IndexedDB'],
+  },
 ]
