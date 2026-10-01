@@ -1,4 +1,11 @@
-import { NAME_EN, PROFILE_IMAGE_URL, ADDRESS } from '@/constants'
+import { NAME, NAME_EN, PROFILE_IMAGE_URL, CAREER_YEARS } from '@/constants'
+
+// 히어로 아래에 근거로 보여줄 성과 — 주장(헤드라인)마다 증거를 하나씩 붙인다
+const PROOFS = [
+  { value: 'On-device AI', label: '서버 없이 브라우저에서 도는 AI 학습 앱' },
+  { value: '상용 배포', label: 'AR 포토부스 키오스크 실제 매장 운영' },
+  { value: '72% → 99%', label: '실시간 상담 통화 성공률 개선' },
+]
 
 export function HeroSection() {
   return (
@@ -7,14 +14,33 @@ export function HeroSection() {
         {/* Text Content */}
         <div className="order-2 lg:order-1 flex flex-col gap-8">
           <div className="flex flex-col gap-4">
-            <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">
-              Frontend &amp; <span className="text-[var(--color-primary)]">Full-Stack</span> Developer
+            <p className="section-label">
+              Frontend Developer · {NAME}
+            </p>
+            <h1 className="text-4xl md:text-6xl font-black leading-tight tracking-tighter break-keep">
+              웹 위에서 <span className="text-[var(--color-primary)]">AI와 AR</span>을
+              <br />
+              실제로 동작하는 제품으로
             </h1>
-            <p className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-lg leading-relaxed">
-              {NAME_EN} — 6년간의 프론트엔드 개발 경험과 UI/UX 디자인 배경을 바탕으로
-              사용자 중심의 웹 애플리케이션을 구축합니다. {ADDRESS} 기반.
+            <p className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-lg leading-relaxed break-keep">
+              온디바이스 LLM(WebGPU), 실시간 영상 처리(MediaPipe), 데스크톱 키오스크(Tauri)까지 —
+              {` ${CAREER_YEARS}`}년간 웹 기술로 실제 사용자에게 배포되는 제품을 만들어 왔습니다.
+              디자이너 출신으로 UI/UX를 함께 설계하고, 백엔드까지 직접 다룹니다.
             </p>
           </div>
+
+          {/* Proofs */}
+          <dl className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {PROOFS.map((proof) => (
+              <div
+                key={proof.value}
+                className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]/50"
+              >
+                <dt className="font-black text-[var(--color-primary)]">{proof.value}</dt>
+                <dd className="mt-1 text-xs text-[var(--color-text-muted)] break-keep">{proof.label}</dd>
+              </div>
+            ))}
+          </dl>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">

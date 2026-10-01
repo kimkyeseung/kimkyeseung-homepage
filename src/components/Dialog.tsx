@@ -35,11 +35,12 @@ export function Dialog({ isOpen, onClose, title, children }: DialogProps) {
     }
   }, [isOpen])
 
-  // Focus trap
+  // 열 때 다이얼로그로 포커스를 옮기고, 닫으면 열었던 버튼으로 되돌린다
   useEffect(() => {
-    if (isOpen && dialogRef.current) {
-      dialogRef.current.focus()
-    }
+    if (!isOpen) return
+    const opener = document.activeElement as HTMLElement | null
+    dialogRef.current?.focus()
+    return () => opener?.focus()
   }, [isOpen])
 
   if (!isOpen) return null
@@ -62,10 +63,10 @@ export function Dialog({ isOpen, onClose, title, children }: DialogProps) {
       <div
         ref={dialogRef}
         tabIndex={-1}
-        className="relative w-full max-w-2xl max-h-[85vh] bg-white rounded-2xl shadow-2xl overflow-hidden animate-scale-in"
+        className="relative w-full max-w-2xl max-h-[85vh] bg-[var(--color-surface)] text-[var(--color-text)] rounded-2xl shadow-2xl overflow-hidden animate-scale-in outline-none"
       >
         {/* Header */}
-        <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+        <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-[var(--color-primary)] text-white">
           <h2 id="dialog-title" className="text-lg font-bold">
             {title}
           </h2>

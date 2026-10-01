@@ -7,6 +7,7 @@ import {
   GITHUB_URL,
   BEHANCE_URL,
   INTRODUCTION,
+  CAREER_YEARS,
   EXPERIENCES,
   EDUCATIONS,
   SUMMARIES,
@@ -35,7 +36,7 @@ export function ResumePdf() {
             <View style={styles.headerLeft}>
               <Text style={styles.name}>{NAME_EN}</Text>
               <Text style={styles.title}>{TITLE}</Text>
-              <Text style={styles.subtitle}>6년차 프론트엔드 개발자</Text>
+              <Text style={styles.subtitle}>{CAREER_YEARS}년 경력 프론트엔드 개발자</Text>
               <Text style={styles.introduction}>{INTRODUCTION}</Text>
             </View>
             <View style={styles.headerRight}>
