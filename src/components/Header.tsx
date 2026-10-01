@@ -4,20 +4,7 @@ import { useDarkMode } from '@/hooks/useDarkMode'
 
 // Logo SVG Component
 function Logo() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="currentColor"
-      className="size-8"
-      aria-hidden="true"
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"
-      />
-    </svg>
-  )
+  return <img src="/logo.svg" alt="" aria-hidden="true" className="size-8" />
 }
 
 // Sun Icon
@@ -71,9 +58,7 @@ export function Header() {
       <div className="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo & Name */}
         <div className="flex items-center gap-3">
-          <div className="text-[var(--color-primary)]">
-            <Logo />
-          </div>
+          <Logo />
           <h2 className="text-lg font-bold tracking-tight">{NAME_EN}</h2>
         </div>
 
