@@ -19,3 +19,8 @@ export const CONTACT_INFO = {
   behance: BEHANCE_URL,
   address: ADDRESS,
 }
+
+export const WISHKET_URL = 'https://www.wishket.com/partners/p/chickenboys/portfolio/'
+
+// 지금 받을 수 있는 일 — 이력 사이드바와 연락처 섹션이 같이 쓴다
+export const AVAILABILITY = '현재 프리랜서로 활동 중이며, 새로운 프로젝트와 풀타임 포지션을 함께 검토하고 있습니다.'
