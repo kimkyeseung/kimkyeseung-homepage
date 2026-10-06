@@ -48,7 +48,7 @@ npm run lint     # ESLint 실행
 ## 데이터 수정
 
 이력서 내용 수정 시 `src/constants/` 디렉토리의 파일 수정:
-- `projects.ts` - 프로젝트 카드·상세 (`kind`로 실무/개인 구분, `image`에 스크린샷 경로)
+- `projects.ts` - 프로젝트 카드·상세 (`kind`로 실무/개인 구분, `images`에 스크린샷 경로 — 첫 장이 카드 썸네일, 파일은 `public/projects/<slug>/`)
 - `highlights.ts` - 이력 섹션 Highlights 카드 (숫자는 `experiences.ts`의 impact와 맞출 것)
 - `experiences.ts` - 경력 사항
 - `educations.ts` - 교육 이력

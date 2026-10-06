@@ -27,10 +27,10 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
         className="group flex flex-col gap-4 text-left rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
         aria-label={`${project.title} 자세히 보기`}
       >
-        {/* Image Placeholder */}
+        {/* Thumbnail */}
         <div className="image-wrapper w-full">
-          {project.image ? (
-            <div style={{ backgroundImage: `url(${project.image})` }} />
+          {project.images?.length ? (
+            <img src={project.images[0]} alt="" loading="lazy" decoding="async" />
           ) : (
             <div
               className={`bg-gradient-to-br ${PROJECT_GRADIENTS[index % PROJECT_GRADIENTS.length]} flex items-center justify-center`}
@@ -111,6 +111,26 @@ function ProjectDetail({ project }: { project: Project }) {
         </div>
       )}
 
+      {project.images && project.images.length > 0 && (
+        <div>
+          <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--color-text-muted)] mb-3">
+            Screenshots
+          </h3>
+          <div className="flex flex-col gap-4">
+            {project.images.map((src, i) => (
+              <img
+                key={src}
+                src={src}
+                alt={`${project.title} 스크린샷 ${i + 1}`}
+                loading="lazy"
+                decoding="async"
+                className="max-w-full mx-auto rounded-xl border border-[var(--color-border)]"
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="flex flex-wrap gap-2">
         {project.techs.map((tech) => (
           <span key={tech} className="skill-tag">
@@ -126,7 +146,7 @@ function ProjectDetail({ project }: { project: Project }) {
           rel="noopener noreferrer"
           className="btn-primary self-start"
         >
-          사이트 방문
+          {project.urlLabel ?? '사이트 방문'}
           <ArrowIcon />
         </a>
       )}

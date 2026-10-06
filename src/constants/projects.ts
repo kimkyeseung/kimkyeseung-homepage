@@ -16,9 +16,14 @@ export interface Project {
   /** 소속/클라이언트 */
   client?: string
   url?: string
-  image?: string
+  /** 링크 버튼 문구 (기본: 사이트 방문) */
+  urlLabel?: string
+  /** 스크린샷 경로 (public 기준). 첫 장이 카드 썸네일, 전체는 상세 다이얼로그 갤러리 */
+  images?: string[]
   techs: string[]
 }
+
+const shots = (dir: string, files: string[]) => files.map((file) => `/projects/${dir}/${file}.jpg`)
 
 export const PROJECT_GROUPS: { kind: ProjectKind; label: string; title: string; description: string }[] = [
   {
@@ -68,7 +73,48 @@ export const FEATURED_PROJECTS: Project[] = [
       'NestJS + Prisma + Google Cloud Storage 백엔드 구축',
       'QR 코드 생성 및 AR 콘텐츠 배포 시스템 구현',
     ],
+    images: shots('ar-content-tool', ['body-01', 'body-02', 'body-03', 'body-04']),
     techs: ['React', 'MindAR', 'Three.js', 'NestJS'],
+  },
+  {
+    title: 'ViS-ractive',
+    kind: 'client',
+    client: 'Viswave · 프리랜서',
+    category: 'Desktop App · 3D/Media Art',
+    summary: '웹캠으로 관람객의 움직임을 읽어 3D 아바타가 따라 하는 전시용 미디어아트 앱',
+    metric: '행사·전시 현장 운영',
+    description:
+      '행사·전시용 실시간 인터랙티브 미디어아트 데스크톱 앱. 웹캠으로 관람객의 얼굴·손·몸 움직임을 추적해 VRM 3D 아바타에 실시간으로 반영합니다. 기획부터 설계, 프론트엔드, 배포까지 1인 개발.',
+    points: [
+      'MediaPipe + Kalidokit으로 얼굴/신체 모션 인식 및 추적',
+      '@pixiv/three-vrm을 활용한 VRM 아바타 렌더링',
+      'Tauri 기반 크로스플랫폼 데스크톱 앱 개발',
+      '커스텀 배경, 이펙트, 배너 등 미디어 관리 기능 구현',
+    ],
+    url: 'https://www.youtube.com/watch?v=F-Yqv25rgnY',
+    urlLabel: '시연 영상 보기',
+    images: shots('vis-ractive', ['body-01']),
+    techs: ['React', 'Three.js', 'MediaPipe', 'Tauri'],
+  },
+  {
+    title: '인터랙티브 튜토리얼 메이커',
+    kind: 'client',
+    client: 'Viswave · 프리랜서',
+    category: 'Desktop App · Kiosk/Signage',
+    summary: '코딩 없이 터치스크린 튜토리얼을 만들어 실행파일 하나로 배포하는 제작 도구',
+    metric: '전시 현장 터치스크린 배포',
+    description:
+      '공공기관·교육기관을 위한 인터랙티브 터치스크린 튜토리얼 제작 도구. 동영상·이미지 기반 튜토리얼을 코딩 없이 만들고, 단일 실행파일(.exe)로 내보내 현장에 바로 배포합니다.',
+    points: [
+      'Tauri + React 기반 데스크톱 앱 개발',
+      '@dnd-kit을 활용한 드래그 앤 드롭 UI 구현',
+      '튜토리얼 스텝별 인터랙션 정의 및 내보내기 기능',
+      'Monorepo 구조로 Maker/Player 앱 통합 관리',
+    ],
+    url: 'https://youtu.be/y8eIsFedxpg',
+    urlLabel: '시연 영상 보기',
+    images: shots('tutorial-maker', ['body-05', 'body-02', 'body-03', 'body-04', 'body-01']),
+    techs: ['React', 'Tauri', 'dnd-kit', 'TypeScript'],
   },
   {
     title: '3ridge 플랫폼',
@@ -84,6 +130,7 @@ export const FEATURED_PROJECTS: Project[] = [
       '모바일/데스크톱 반응형 지원',
     ],
     url: 'https://www.3ridge.io/',
+    images: shots('3ridge', ['body-01', 'body-02']),
     techs: ['Next.js', 'TanStack Query', 'GraphQL'],
   },
   {
@@ -136,7 +183,51 @@ export const FEATURED_PROJECTS: Project[] = [
       '오프라인 PWA, 학습 기록은 IndexedDB에 저장하고 파일로 백업·복원',
     ],
     url: 'https://kimkyeseung-nihongo.vercel.app/',
+    images: shots('nihongo', [
+      'body-01',
+      'body-02',
+      'body-03',
+      'body-04',
+      'feature-01',
+      'feature-02',
+      'feature-03',
+      'feature-04',
+    ]),
     techs: ['React', 'TypeScript', 'WebGPU', 'LiteRT-LM', 'Zustand', 'IndexedDB'],
+  },
+  {
+    title: 'HumBeat',
+    kind: 'personal',
+    category: 'Web App · Gen AI',
+    summary: '마이크에 흥얼거린 멜로디를 AI가 완성된 음악 트랙으로 만들어 주는 서비스',
+    metric: '기획·디자인·개발 1인 MVP',
+    description:
+      '음악 창작에 관심 있는 일반인과 크리에이터를 위한 AI 음악 생성 서비스. 마이크로 허밍한 멜로디를 분석해 원하는 장르·분위기의 완성된 트랙으로 변환합니다. 기획·디자인·프론트엔드·백엔드를 혼자 맡은 MVP.',
+    points: [
+      '허밍 녹음 → 스타일 선택 → 트랙 생성의 3단계 제작 흐름',
+      'Web Audio API 기반 브라우저 마이크 녹음',
+      'Supabase 인증·저장소로 생성한 곡 라이브러리와 공유 링크',
+      '무료/Pro/Creator 요금제별 생성 횟수·트랙 길이·다운로드 품질 제한',
+    ],
+    url: 'https://humbeat.kimkyeseung.com/',
+    images: shots('humbeat', ['body-01', 'body-02', 'body-03', 'body-04']),
+    techs: ['Next.js', 'TypeScript', 'OpenAI', 'Supabase'],
+  },
+  {
+    title: 'W2P 그래픽 에디터',
+    kind: 'personal',
+    category: 'Web App · Graphic Editor',
+    summary: '명함·포스터·카드를 인쇄 규격에 맞춰 디자인하는 Web-to-Print 에디터',
+    description:
+      'React/TypeScript 기반 W2P(Web-to-Print) 그래픽 에디터. 명함(90×50mm), 정사각 카드, A4 포스터 등 인쇄 규격을 mm 단위로 다루고, 재단선·안전 영역을 표시해 인쇄 사고 없이 디자인할 수 있게 합니다.',
+    points: [
+      '텍스트·이미지·도형·선 레이어 편집, 레이어 잠금·숨김·순서 변경·다중 선택',
+      'mm 눈금자와 재단선·안전 영역 가이드, 캔버스 기준 정렬·반전',
+      '그라디언트·블렌드 모드·그림자 등 속성 패널',
+      '상품 목업 미리보기와 PNG 내보내기, 규격별 샘플 템플릿',
+    ],
+    images: shots('w2p-editor', ['body-01', 'body-02', 'body-03', 'body-04', 'body-05']),
+    techs: ['React', 'TypeScript', 'Canvas'],
   },
   {
     title: 'Dice Art',
@@ -145,6 +236,7 @@ export const FEATURED_PROJECTS: Project[] = [
     summary: '사진을 주사위 모자이크로 바꿔 직접 채워 완성하는 웹 앱',
     description:
       '업로드한 이미지를 주사위 모자이크 아트로 변환하는 웹 앱. 이미지를 그리드로 분석해 셀별 목표 주사위 값을 계산하고, Canvas 기반 드로잉으로 직접 채워 완성. 대형 그리드 섹션 네비게이션과 완성작 갤러리 제공.',
+    images: shots('dice-art', ['body-01', 'body-02', 'body-03', 'body-04']),
     techs: ['Next.js', 'Canvas', 'Prisma', 'PostgreSQL'],
   },
   {
@@ -163,6 +255,7 @@ export const FEATURED_PROJECTS: Project[] = [
     summary: '차트로 거래 흐름을 보고 PDF 리포트로 내보내는 모의 주식 트레이딩',
     description:
       '모의 주식 트레이딩 시뮬레이터. ECharts 기반 차트 시각화로 거래 흐름을 확인하고, 거래 내역을 PDF 리포트로 내보낼 수 있는 도메인 주도 설계 구조의 웹 앱.',
+    images: shots('mocktrader', ['body-01', 'body-02', 'body-03', 'body-04']),
     techs: ['React', 'Zustand', 'ECharts', '@react-pdf/renderer'],
   },
 ]
