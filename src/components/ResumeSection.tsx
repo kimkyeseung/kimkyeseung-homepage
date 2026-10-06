@@ -1,4 +1,7 @@
+import { useState } from 'react'
 import { EXPERIENCES } from '@/constants/experiences'
+import { HIGHLIGHTS } from '@/constants/highlights'
+import { AVAILABILITY } from '@/constants/basic'
 import { EDUCATIONS } from '@/constants/educations'
 import { skillSets } from '@/constants/skillsets'
 
@@ -9,14 +12,22 @@ function formatPeriod(joinedAt?: string, seperatedAt?: string, isOngoing?: boole
   return `${joinedAt} — ${seperatedAt ?? ''}`
 }
 
+// 접었을 때 보여줄 경력 수 / 경력마다 보여줄 프로젝트 수
+const COLLAPSED_EXPERIENCES = 4
+const COLLAPSED_PROJECTS = 2
+
 // 스킬 데이터 플랫하게 변환
 const DESIGN_SKILLS = ['Figma', 'Adobe XD', 'Photoshop']
 const FRONTEND_SKILLS = skillSets.frontEnds.map(s => s.name.split(' / ')[0]).slice(0, 6)
 const BACKEND_SKILLS = skillSets.backEnds.map(s => s.name).slice(0, 5)
 
 export function ResumeSection() {
-  // 상위 4개 경력만 표시
-  const displayExperiences = EXPERIENCES.slice(0, 4)
+  // 접혀 있을 때는 최근 경력과 대표 프로젝트만, 펼치면 전부 보여준다
+  const [isExpanded, setIsExpanded] = useState(false)
+  const displayExperiences = isExpanded ? EXPERIENCES : EXPERIENCES.slice(0, COLLAPSED_EXPERIENCES)
+  const hasMore =
+    EXPERIENCES.length > COLLAPSED_EXPERIENCES ||
+    EXPERIENCES.some((exp) => exp.projects.length > COLLAPSED_PROJECTS)
 
   return (
     <section id="resume" className="py-20 border-t border-[var(--color-border)]">
@@ -38,7 +49,7 @@ export function ResumeSection() {
               <h3 className="text-2xl font-bold">Experience</h3>
             </div>
 
-            <div className="flex flex-col gap-10">
+            <div id="experience-list" className="flex flex-col gap-10">
               {displayExperiences.map((exp, index) => (
                 <div key={exp.name} className="flex flex-col md:flex-row md:gap-8">
                   <span className={`md:w-32 text-sm font-semibold uppercase tracking-wider pt-1 ${index === 0 ? 'text-[var(--color-primary)]' : 'text-[var(--color-text-muted)]'}`}>
@@ -64,9 +75,9 @@ export function ResumeSection() {
                         {exp.descriptions[0].title}
                       </p>
                     )}
-                    {exp.projects && exp.projects.length > 0 && index < 2 && (
+                    {exp.projects.length > 0 && (isExpanded || index < 2) && (
                       <ul className="list-disc list-inside text-sm text-[var(--color-text-muted)] space-y-1">
-                        {exp.projects.slice(0, 2).map((project) => (
+                        {(isExpanded ? exp.projects : exp.projects.slice(0, COLLAPSED_PROJECTS)).map((project) => (
                           <li key={project.title}>
                             <strong>{project.title}</strong>
                             {project.impact && ` — ${project.impact}`}
@@ -78,6 +89,17 @@ export function ResumeSection() {
                 </div>
               ))}
             </div>
+            {hasMore && (
+              <button
+                type="button"
+                onClick={() => setIsExpanded((expanded) => !expanded)}
+                aria-expanded={isExpanded}
+                aria-controls="experience-list"
+                className="btn-outline mt-10"
+              >
+                {isExpanded ? '접기' : `전체 경력 보기 (${EXPERIENCES.length}곳)`}
+              </button>
+            )}
           </div>
 
           {/* Education */}
@@ -118,16 +140,16 @@ export function ResumeSection() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]/50">
-                <p className="text-[var(--color-primary)] font-bold text-xs uppercase tracking-widest">Impact</p>
-                <h4 className="font-bold">통화 성공률 72% → 99%</h4>
-                <p className="text-sm text-[var(--color-text-muted)]">마인드카페 보이스테라피</p>
-              </div>
-              <div className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]/50">
-                <p className="text-[var(--color-primary)] font-bold text-xs uppercase tracking-widest">System</p>
-                <h4 className="font-bold">50+ 컴포넌트 디자인 시스템</h4>
-                <p className="text-sm text-[var(--color-text-muted)]">위버 Storybook 기반</p>
-              </div>
+              {HIGHLIGHTS.map((highlight) => (
+                <div
+                  key={highlight.title}
+                  className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]/50"
+                >
+                  <p className="text-[var(--color-primary)] font-bold text-xs uppercase tracking-widest">{highlight.kind}</p>
+                  <h4 className="font-bold">{highlight.title}</h4>
+                  <p className="text-sm text-[var(--color-text-muted)]">{highlight.source}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -183,7 +205,7 @@ export function ResumeSection() {
             <div className="pt-6 border-t border-[var(--color-border)]">
               <h3 className="text-lg font-bold mb-4">Availability</h3>
               <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
-                현재 프리랜서로 활동 중이며, 새로운 프로젝트 및 풀타임 포지션을 검토하고 있습니다.
+                {AVAILABILITY}
               </p>
             </div>
           </div>

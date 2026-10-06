@@ -1,64 +1,166 @@
+// client: 회사·외주로 만든 것 / personal: 직접 기획한 사이드 프로젝트
+export type ProjectKind = 'client' | 'personal'
+
 export interface Project {
   title: string
+  kind: ProjectKind
   category: string
+  /** 카드에 보이는 한 줄 요약 */
+  summary: string
+  /** 카드에 강조해 보여줄 성과 하나 */
+  metric?: string
+  /** 상세 다이얼로그의 본문 */
   description: string
+  /** 상세 다이얼로그의 "한 일" 목록 */
+  points?: string[]
+  /** 소속/클라이언트 */
+  client?: string
   url?: string
   image?: string
   techs: string[]
 }
 
+export const PROJECT_GROUPS: { kind: ProjectKind; label: string; title: string; description: string }[] = [
+  {
+    kind: 'client',
+    label: 'Client & Company',
+    title: '실무 프로젝트',
+    description: '회사와 외주로 실제 사용자에게 배포한 제품들입니다.',
+  },
+  {
+    kind: 'personal',
+    label: 'Side Projects',
+    title: '개인 프로젝트',
+    description: '직접 기획부터 배포까지 혼자 만든 제품들입니다.',
+  },
+]
+
 export const FEATURED_PROJECTS: Project[] = [
   {
     title: 'AR 포토부스 키오스크 (AR-Pic)',
+    kind: 'client',
+    client: 'Viswave · 프리랜서',
     category: 'Kiosk · AI/Desktop App',
+    summary: '실시간 AI 배경 제거부터 카드 결제·인쇄까지 갖춘 무인 포토부스 앱',
+    metric: '실제 매장 상용 배포',
     description:
       'Windows 전용 AI 포토부스 데스크톱 앱. MediaPipe 기반 실시간 배경 제거, QR 사진 공유, 카드 결제까지 지원하며 실제 매장에 상용 배포.',
+    points: [
+      'Next.js(App Router) + Tauri 기반 Windows 데스크톱 앱 개발',
+      'MediaPipe 셀피 세그멘테이션으로 실시간 배경 제거',
+      '프레임 레이아웃·스티커 오버레이·QR 코드 기반 디지털 사진 공유',
+      'PayApp 카드 결제 연동 및 프린터 인쇄 시스템 구축',
+      'Supabase + Prisma 기반 백엔드와 다지점 관리자 패널',
+    ],
     techs: ['Next.js', 'Tauri', 'MediaPipe', 'Supabase'],
   },
   {
     title: 'AR 콘텐츠 제작 도구',
+    kind: 'client',
+    client: 'Viswave · 프리랜서',
     category: 'Web App · AR/VR',
+    summary: '이미지 한 장으로 AR 콘텐츠를 만들고 QR로 배포하는 노코드 도구',
+    metric: '비개발자용 노코드 AR 플랫폼',
     description: 'MindAR + Three.js 기반 AR 콘텐츠 생성 웹 애플리케이션. 비개발자도 AR 콘텐츠 제작 가능한 노코드 플랫폼.',
+    points: [
+      'MindAR + Three.js + A-Frame 기반 AR 뷰어 개발',
+      'FFmpeg/WebCodecs로 브라우저 안에서 비디오 처리',
+      'NestJS + Prisma + Google Cloud Storage 백엔드 구축',
+      'QR 코드 생성 및 AR 콘텐츠 배포 시스템 구현',
+    ],
     techs: ['React', 'MindAR', 'Three.js', 'NestJS'],
   },
   {
     title: '3ridge 플랫폼',
+    kind: 'client',
+    client: 'DeSpread',
     category: 'Web3 · Full Stack',
+    summary: '월 5만+ 사용자의 Web3 온보딩 플랫폼 전면 리뉴얼',
+    metric: '페이지 로딩 속도 40% 개선',
     description: 'Web3 온보딩 플랫폼 전면 리뉴얼. Next.js App Router 활용, 페이지 로딩 속도 40% 개선.',
+    points: [
+      'Next.js App Router 및 Server Actions로 성능 최적화',
+      '다양한 블록체인 지갑 연결 및 인증 시스템 구현',
+      '모바일/데스크톱 반응형 지원',
+    ],
     url: 'https://www.3ridge.io/',
     techs: ['Next.js', 'TanStack Query', 'GraphQL'],
   },
   {
     title: '위버 B2B 플랫폼',
+    kind: 'client',
+    client: '위버 (Weebur)',
     category: 'E-commerce · Design System',
+    summary: 'B2B 기업 워크샵 매칭 플랫폼의 디자인 시스템 구축과 서비스 런칭',
+    metric: '50+ 컴포넌트 디자인 시스템',
     description: 'B2B 기업 워크샵 매칭 플랫폼. 디자인 시스템 구축 및 50+ 컴포넌트 개발.',
+    points: [
+      'Storybook 기반 디자인 시스템 구축 — 신규 페이지 개발 시간 40% 단축',
+      '3개월 내 MVP 런칭, 코드 재사용률 70%',
+      '모바일 UI 최적화로 모바일 전환율 25% 향상',
+      '실시간 채팅·커머스 기능으로 평균 응답 시간 80% 단축',
+    ],
     url: 'https://www.weebur.com/',
     techs: ['Next.js', 'Storybook', 'Styled Components'],
   },
   {
     title: '마인드카페 전문가앱',
+    kind: 'client',
+    client: '아토머스 (Atommerce)',
     category: 'Healthcare · Real-time',
+    summary: '1,000+ 상담사가 쓰는 실시간 채팅·음성 상담 웹앱',
+    metric: '통화 성공률 72% → 99%',
     description: '심리상담 플랫폼 전문가용 웹앱. 실시간 채팅/통화 품질 개선으로 통화 성공률 72% → 99% 향상.',
+    points: [
+      '통화/채팅 품질 개선 TF — 권한·네트워크 상태 UX 개선으로 통화 성공률 72% → 99%',
+      'Sendbird 도입으로 폴링을 실시간 메시징으로 전환 — 전달 지연 5초 → 0.1초',
+      '전문가용 페이지 리뉴얼 — 로딩 속도 50% 개선',
+      '관리자 페이지 보일러플레이트로 개발 속도 60% 향상',
+    ],
     url: 'https://www.mindcafe.co.kr/',
     techs: ['Vue.js', 'Sendbird', 'WebRTC'],
   },
   {
+    title: '김계승 일본어',
+    kind: 'personal',
+    category: 'Web App · On-device AI · PWA',
+    summary: '서버 없이 브라우저 안의 AI로 회화·작문 첨삭·질문을 하는 일본어 학습 앱',
+    metric: '서버 없는 온디바이스 AI',
+    description:
+      '서버 없이 브라우저 안에서 도는 온디바이스 AI 일본어 학습 웹앱. Chrome 내장 Prompt API와 WebGPU 기반 Gemma 4를 갈아끼우는 이중 엔진 구조로 회화·작문 첨삭·AI 선생님을 제공하고, 사전·한자·획순처럼 정답이 정해진 정보는 AI가 아니라 공개 사전 데이터로 처리합니다.',
+    points: [
+      'Chrome Prompt API ↔ WebGPU Gemma 4 이중 엔진 — 브라우저마다 쓸 수 있는 쪽을 판정해 안내',
+      '2GB 모델을 OPFS에 스트리밍 저장, 모바일에서 끊겨도 Range 요청으로 이어받기',
+      '프롬프트 인젝션 4중 방어(입력 감싸기·값 정화·거절 규칙·출력 유출 감지)',
+      'JMDict·KANJIDIC·KanjiVG 가공 데이터로 후리가나·한자 쓰기 채점·SRS 복습',
+      '오프라인 PWA, 학습 기록은 IndexedDB에 저장하고 파일로 백업·복원',
+    ],
+    url: 'https://kimkyeseung-nihongo.vercel.app/',
+    techs: ['React', 'TypeScript', 'WebGPU', 'LiteRT-LM', 'Zustand', 'IndexedDB'],
+  },
+  {
     title: 'Dice Art',
+    kind: 'personal',
     category: 'Web App · Creative Tool',
+    summary: '사진을 주사위 모자이크로 바꿔 직접 채워 완성하는 웹 앱',
     description:
       '업로드한 이미지를 주사위 모자이크 아트로 변환하는 웹 앱. 이미지를 그리드로 분석해 셀별 목표 주사위 값을 계산하고, Canvas 기반 드로잉으로 직접 채워 완성. 대형 그리드 섹션 네비게이션과 완성작 갤러리 제공.',
     techs: ['Next.js', 'Canvas', 'Prisma', 'PostgreSQL'],
   },
   {
     title: 'Lotto Simulator',
+    kind: 'personal',
     category: 'Web App · Full Stack',
+    summary: '로또 번호 생성·당첨 시뮬레이션·통계와 커뮤니티를 담은 풀스택 앱',
     description:
       '로또 번호 생성, 당첨 시뮬레이션, 통계 분석을 제공하는 웹 애플리케이션. TanStack Router 기반 SPA와 Hono API 서버, Neon PostgreSQL을 활용했으며 댓글/좋아요 커뮤니티 기능을 포함.',
     techs: ['React', 'TanStack Router', 'Hono', 'Drizzle ORM'],
   },
   {
     title: 'Mocktrader',
+    kind: 'personal',
     category: 'Web App · Fintech',
+    summary: '차트로 거래 흐름을 보고 PDF 리포트로 내보내는 모의 주식 트레이딩',
     description:
       '모의 주식 트레이딩 시뮬레이터. ECharts 기반 차트 시각화로 거래 흐름을 확인하고, 거래 내역을 PDF 리포트로 내보낼 수 있는 도메인 주도 설계 구조의 웹 앱.',
     techs: ['React', 'Zustand', 'ECharts', '@react-pdf/renderer'],

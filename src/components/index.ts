@@ -7,9 +7,3 @@ export { Footer } from './Footer'
 export { PdfDownloadButton } from './PdfDownloadButton'
 export { Dialog } from './Dialog'
 
-// Legacy components (can be removed if not needed)
-export { AboutSection } from './AboutSection'
-export { EducationSection } from './EducationSection'
-export { TechStackSection } from './TechStackSection'
-export { KeySkillsSection } from './KeySkillsSection'
-export { ExperienceSection } from './ExperienceSection'

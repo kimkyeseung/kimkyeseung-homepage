@@ -39,18 +39,25 @@ npm run lint     # ESLint 실행
 
 - 반응형 이력서 웹페이지
 - PDF 다운로드 (react-pdf 기반, 코드 스플리팅 적용)
-- 다이얼로그를 통한 상세 정보 표시 (Education, Tech Stack)
+- 프로젝트 카드 → 상세 다이얼로그 (실무/개인 프로젝트 그룹 분리)
+- 이력 섹션 "전체 경력 보기" 펼치기
+- 연락처의 의뢰/채용 제안별 메일 템플릿
 - 접근성 지원 (WCAG 준수, 키보드 네비게이션)
 - 인쇄 최적화 스타일
 
 ## 데이터 수정
 
 이력서 내용 수정 시 `src/constants/` 디렉토리의 파일 수정:
+- `projects.ts` - 프로젝트 카드·상세 (`kind`로 실무/개인 구분, `image`에 스크린샷 경로)
+- `highlights.ts` - 이력 섹션 Highlights 카드 (숫자는 `experiences.ts`의 impact와 맞출 것)
 - `experiences.ts` - 경력 사항
 - `educations.ts` - 교육 이력
 - `skills.ts` - 기술 스택
-- `summaries.ts` - About Me 섹션
-- `profile.ts` - 기본 프로필 정보
+- `summary.ts` - 소개 문구(PDF About Me, 4개 — PDF가 2열이라 짝수 유지)
+- `basic.ts` - 기본 프로필 정보, 연락처, `AVAILABILITY`(구직/의뢰 상태 문구)
+
+연차는 `career.ts`의 `CAREER_YEARS`가 경력 데이터에서 계산한다 — 문구에 "N년차"를 직접 쓰지 말 것.
+`index.html`의 메타 태그는 계산할 수 없으니 연차를 넣지 않는다.
 
 ## 스타일 가이드
 
