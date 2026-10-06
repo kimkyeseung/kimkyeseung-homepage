@@ -1,0 +1,127 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-10-06T08:52:44.712Z",
+  "activeFeatures": [
+    "constants",
+    "kimkyeseung-homepage"
+  ],
+  "primaryFeature": "constants",
+  "features": {
+    "constants": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-10-06T08:48:19.557Z",
+        "lastUpdated": "2026-10-06T08:52:43.729Z"
+      },
+      "lastFile": "/Users/kimkyeseung/Documents/kimkyeseung/dev/kimkyeseung-homepage/src/constants/projects.ts"
+    },
+    "kimkyeseung-homepage": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-10-06T08:48:37.063Z",
+        "lastUpdated": "2026-10-06T08:52:44.712Z"
+      },
+      "lastFile": "/Users/kimkyeseung/Documents/kimkyeseung/dev/kimkyeseung-homepage/src/components/WorkSection.tsx"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Dynamic",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-03-03T23:19:34.372Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-10-06T08:52:44.712Z"
+  },
+  "history": [
+    {
+      "timestamp": "2026-10-06T08:48:19.557Z",
+      "feature": "constants",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:48:21.221Z",
+      "feature": "constants",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:48:22.402Z",
+      "feature": "constants",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:48:24.134Z",
+      "feature": "constants",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:48:25.688Z",
+      "feature": "constants",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:48:27.127Z",
+      "feature": "constants",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:48:37.063Z",
+      "feature": "kimkyeseung-homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:48:39.859Z",
+      "feature": "kimkyeseung-homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:50:04.888Z",
+      "feature": "kimkyeseung-homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:52:33.678Z",
+      "feature": "constants",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:52:42.295Z",
+      "feature": "constants",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:52:43.729Z",
+      "feature": "constants",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-10-06T08:52:44.712Z",
+      "feature": "kimkyeseung-homepage",
+      "phase": "do",
+      "action": "updated"
+    }
+  ]
+}
