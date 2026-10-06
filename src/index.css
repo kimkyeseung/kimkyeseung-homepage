@@ -144,7 +144,12 @@
     transition: transform var(--transition-slow);
   }
 
-  .project-card:hover .image-wrapper > div {
+  .project-card .image-wrapper > img {
+    @apply w-full h-full object-cover object-top;
+    transition: transform var(--transition-slow);
+  }
+
+  .project-card:hover .image-wrapper > * {
     transform: scale(1.05);
   }
 }
