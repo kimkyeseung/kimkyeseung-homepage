@@ -21,6 +21,8 @@ export interface Project {
   /** 스크린샷 경로 (public 기준). 첫 장이 카드 썸네일, 전체는 상세 다이얼로그 갤러리 */
   images?: string[]
   techs: string[]
+  /** true면 메인 프로젝트 섹션에서 숨김 (이력 섹션에만 노출) */
+  hidden?: boolean
 }
 
 const shots = (dir: string, files: string[]) => files.map((file) => `/projects/${dir}/${file}.jpg`)
@@ -149,6 +151,7 @@ export const FEATURED_PROJECTS: Project[] = [
     ],
     url: 'https://www.weebur.com/',
     techs: ['Next.js', 'Storybook', 'Styled Components'],
+    hidden: true,
   },
   {
     title: '마인드카페 전문가앱',
@@ -166,6 +169,7 @@ export const FEATURED_PROJECTS: Project[] = [
     ],
     url: 'https://www.mindcafe.co.kr/',
     techs: ['Vue.js', 'Sendbird', 'WebRTC'],
+    hidden: true,
   },
   {
     title: '김계승 일본어',

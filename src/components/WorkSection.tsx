@@ -209,7 +209,7 @@ export function WorkSection() {
 
       <div className="flex flex-col gap-20">
         {PROJECT_GROUPS.map((group) => {
-          const projects = FEATURED_PROJECTS.filter((project) => project.kind === group.kind)
+          const projects = FEATURED_PROJECTS.filter((project) => !project.hidden && project.kind === group.kind)
           if (projects.length === 0) return null
           return (
             <div key={group.kind}>
