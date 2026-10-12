@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
 import { FEATURED_PROJECTS, PROJECT_GROUPS, type Project } from '@/constants/projects'
 import { Dialog } from './Dialog'
+import { Lightbox } from './Lightbox'
 
 // 프로젝트별 그라데이션 배경색
 const PROJECT_GRADIENTS = [
@@ -117,6 +118,9 @@ function ProjectLink({ url, label }: { url: string; label: string }) {
 }
 
 function ProjectDetail({ project }: { project: Project }) {
+  const [zoomed, setZoomed] = useState<number | null>(null)
+  const screenshotAlt = (i: number) => `${project.title} 스크린샷 ${i + 1}`
+
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-10">
       {/* Aside: 요약 정보 · 기술 · 링크 (넓은 화면에선 오른쪽에 고정) */}
@@ -172,16 +176,24 @@ function ProjectDetail({ project }: { project: Project }) {
             <DetailHeading>Screenshots</DetailHeading>
             <div className="flex flex-col gap-5">
               {project.images.map((src, i) => (
-                <img
+                <button
                   key={src}
-                  src={src}
-                  alt={`${project.title} 스크린샷 ${i + 1}`}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full rounded-xl border border-[var(--color-border)] shadow-sm"
-                />
+                  type="button"
+                  onClick={() => setZoomed(i)}
+                  className="block rounded-xl cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+                  aria-label={`${screenshotAlt(i)} 크게 보기`}
+                >
+                  <img
+                    src={src}
+                    alt={screenshotAlt(i)}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full rounded-xl border border-[var(--color-border)] shadow-sm transition-opacity hover:opacity-90"
+                  />
+                </button>
               ))}
             </div>
+            <Lightbox images={project.images} index={zoomed} onChange={setZoomed} alt={screenshotAlt} />
           </div>
         )}
       </div>
