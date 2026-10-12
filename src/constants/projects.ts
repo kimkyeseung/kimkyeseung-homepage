@@ -263,11 +263,23 @@ export const FEATURED_PROJECTS: Project[] = [
   {
     title: 'Lotto Simulator',
     kind: 'personal',
-    category: 'Web App · Full Stack',
-    summary: '로또 번호 생성·당첨 시뮬레이션·통계와 커뮤니티를 담은 풀스택 앱',
+    category: 'Web App · Data Viz',
+    summary: '"매주 이 번호로 샀다면?"을 역대 당첨번호로 계산해 보는 로또 시뮬레이터',
+    metric: '역대 전 회차 실데이터 백테스트',
     description:
-      '로또 번호 생성, 당첨 시뮬레이션, 통계 분석을 제공하는 웹 애플리케이션. TanStack Router 기반 SPA와 Hono API 서버, Neon PostgreSQL을 활용했으며 댓글/좋아요 커뮤니티 기능을 포함.',
-    techs: ['React', 'TanStack Router', 'Hono', 'Drizzle ORM'],
+      '로또 6/45를 직접 사지 않고도 "계속 사면 어떻게 될까?"를 확인하는 웹 시뮬레이터. 5장의 용지로 구매를 반복하며 수익률·번호 통계를 보고, 1회(2002년)부터 최신 회차까지의 실제 당첨번호와 회차별 당첨금으로 백테스트 리포트를 만든다. 서버·DB 없이 브라우저에서만 동작하는 정적 SPA.',
+    points: [
+      'A~E 5장 용지 직접 선택·자동 채움, 1회/자동 연속 구매와 회차별 수익률·번호 히트맵·진행 로그',
+      '역대 당첨번호 백테스트 리포트 6개 섹션 — 한눈에 보기, 운 분석, 시간 흐름, 번호 분석, 용지 비교, 기회비용',
+      '확률상 기대 당첨 횟수와 실제 비교, 같은 조건의 무작위 1,000명 시뮬레이션으로 내 순위 산출',
+      '누적·연도별 손익, 최장 연속 꽝·최대 낙폭, 적금(연이율 조절)과의 기회비용 비교를 Recharts로 시각화',
+      '게임 가격 변경(2004년 2,000원→1,000원)과 1·2등 미배출 회차까지 반영한 계산 로직, node:test 단위 테스트',
+      'GitHub Actions가 매주 새 회차 당첨번호를 받아 검증 후 커밋하는 데이터 파이프라인',
+      '결과를 링크(/share#…) 또는 1080×1080 이미지로 공유, 모바일 공유 시트·라이트/다크 테마 대응',
+    ],
+    url: 'https://lotto-simulator-three.vercel.app',
+    images: shots('lotto-simulator', ['body-01', 'body-02', 'body-03', 'body-04', 'body-05', 'body-06', 'body-07']),
+    techs: ['React', 'TypeScript', 'TanStack Router', 'Zustand', 'Recharts', 'Tailwind CSS'],
   },
   {
     title: 'Mocktrader',
