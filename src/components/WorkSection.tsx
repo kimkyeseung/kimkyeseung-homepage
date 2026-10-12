@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { QRCodeSVG } from 'qrcode.react'
 import { FEATURED_PROJECTS, PROJECT_GROUPS, type Project } from '@/constants/projects'
 import { Dialog } from './Dialog'
 
@@ -77,79 +78,113 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
   )
 }
 
-function ProjectDetail({ project }: { project: Project }) {
+function DetailHeading({ children }: { children: string }) {
   return (
-    <div className="flex flex-col gap-6">
-      <div>
-        <p className="text-sm text-[var(--color-text-muted)]">
-          {project.client ? `${project.client} · ${project.category}` : project.category}
-        </p>
-        {project.metric && (
-          <p className="inline-block mt-3 px-3 py-1 text-sm font-bold rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
-            {project.metric}
+    <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--color-text-muted)] mb-3">{children}</h3>
+  )
+}
+
+function ProjectLink({ url, label }: { url: string; label: string }) {
+  return (
+    <div className="flex items-stretch gap-4 p-4 rounded-2xl border border-[var(--color-border)] bg-[var(--color-background)]">
+      <div className="flex flex-col justify-between gap-3 flex-1 min-w-0">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-text-muted)]">Live</p>
+          <p className="mt-1 text-sm font-medium break-all line-clamp-2" title={url}>
+            {url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
           </p>
-        )}
+        </div>
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary justify-center !px-5 !py-3 text-sm"
+        >
+          {label}
+          <ArrowIcon className="w-4 h-4" />
+        </a>
       </div>
 
-      <p className="leading-relaxed">{project.description}</p>
-
-      {project.points && project.points.length > 0 && (
-        <div>
-          <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--color-text-muted)] mb-3">
-            What I did
-          </h3>
-          <ul className="flex flex-col gap-2">
-            {project.points.map((point) => (
-              <li key={point} className="flex gap-2 text-sm leading-relaxed">
-                <span className="text-[var(--color-primary)] font-bold" aria-hidden="true">
-                  ·
-                </span>
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
+      {/* 데스크톱에서 보는 사람이 휴대폰으로 바로 열어볼 수 있게 — 모바일에선 의미가 없어 숨긴다 */}
+      <figure className="hidden sm:flex flex-col items-center gap-2 shrink-0">
+        <div className="p-2 rounded-xl bg-white">
+          <QRCodeSVG value={url} size={96} level="M" title={`${label} QR 코드`} />
         </div>
-      )}
+        <figcaption className="text-[11px] text-[var(--color-text-muted)]">휴대폰으로 스캔</figcaption>
+      </figure>
+    </div>
+  )
+}
 
-      {project.images && project.images.length > 0 && (
+function ProjectDetail({ project }: { project: Project }) {
+  return (
+    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-10">
+      {/* Aside: 요약 정보 · 기술 · 링크 (넓은 화면에선 오른쪽에 고정) */}
+      <aside className="flex flex-col gap-6 lg:order-2 lg:sticky lg:top-0 lg:self-start">
         <div>
-          <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--color-text-muted)] mb-3">
-            Screenshots
-          </h3>
-          <div className="flex flex-col gap-4">
-            {project.images.map((src, i) => (
-              <img
-                key={src}
-                src={src}
-                alt={`${project.title} 스크린샷 ${i + 1}`}
-                loading="lazy"
-                decoding="async"
-                className="max-w-full mx-auto rounded-xl border border-[var(--color-border)]"
-              />
+          <p className="text-sm text-[var(--color-text-muted)]">
+            {project.client ? `${project.client} · ${project.category}` : project.category}
+          </p>
+          {project.metric && (
+            <p className="inline-block mt-3 px-3 py-1 text-sm font-bold rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
+              {project.metric}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <DetailHeading>Tech Stack</DetailHeading>
+          <div className="flex flex-wrap gap-2">
+            {project.techs.map((tech) => (
+              <span key={tech} className="skill-tag">
+                {tech}
+              </span>
             ))}
           </div>
         </div>
-      )}
 
-      <div className="flex flex-wrap gap-2">
-        {project.techs.map((tech) => (
-          <span key={tech} className="skill-tag">
-            {tech}
-          </span>
-        ))}
+        {project.url && <ProjectLink url={project.url} label={project.urlLabel ?? '사이트 방문'} />}
+      </aside>
+
+      {/* Main: 설명 · 한 일 · 스크린샷 */}
+      <div className="flex flex-col gap-8 min-w-0 lg:order-1">
+        <p className="text-base md:text-lg leading-relaxed">{project.description}</p>
+
+        {project.points && project.points.length > 0 && (
+          <div>
+            <DetailHeading>What I did</DetailHeading>
+            <ul className="grid gap-3">
+              {project.points.map((point) => (
+                <li key={point} className="flex gap-3 text-sm md:text-[15px] leading-relaxed">
+                  <span
+                    className="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--color-primary)]"
+                    aria-hidden="true"
+                  />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {project.images && project.images.length > 0 && (
+          <div>
+            <DetailHeading>Screenshots</DetailHeading>
+            <div className="flex flex-col gap-5">
+              {project.images.map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt={`${project.title} 스크린샷 ${i + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full rounded-xl border border-[var(--color-border)] shadow-sm"
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
-
-      {project.url && (
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-primary self-start"
-        >
-          {project.urlLabel ?? '사이트 방문'}
-          <ArrowIcon />
-        </a>
-      )}
     </div>
   )
 }
@@ -204,7 +239,7 @@ export function WorkSection() {
         })}
       </div>
 
-      <Dialog isOpen={selected !== null} onClose={() => setSelected(null)} title={selected?.title ?? ''}>
+      <Dialog isOpen={selected !== null} onClose={() => setSelected(null)} title={selected?.title ?? ''} size="xl">
         {selected && <ProjectDetail project={selected} />}
       </Dialog>
     </section>

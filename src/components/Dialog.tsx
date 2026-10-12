@@ -6,9 +6,16 @@ interface DialogProps {
   onClose: () => void
   title: string
   children: ReactNode
+  /** md: 일반 안내용, xl: 프로젝트 상세처럼 내용이 많은 경우 */
+  size?: 'md' | 'xl'
 }
 
-export function Dialog({ isOpen, onClose, title, children }: DialogProps) {
+const SIZE_CLASS = {
+  md: 'max-w-2xl max-h-[85vh]',
+  xl: 'max-w-6xl max-h-[92vh]',
+} as const
+
+export function Dialog({ isOpen, onClose, title, children, size = 'md' }: DialogProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
 
   // Handle ESC key
@@ -47,7 +54,7 @@ export function Dialog({ isOpen, onClose, title, children }: DialogProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6"
       role="dialog"
       aria-modal="true"
       aria-labelledby="dialog-title"
@@ -63,16 +70,16 @@ export function Dialog({ isOpen, onClose, title, children }: DialogProps) {
       <div
         ref={dialogRef}
         tabIndex={-1}
-        className="relative w-full max-w-2xl max-h-[85vh] bg-[var(--color-surface)] text-[var(--color-text)] rounded-2xl shadow-2xl overflow-hidden animate-scale-in outline-none"
+        className={`relative flex flex-col w-full ${SIZE_CLASS[size]} bg-[var(--color-surface)] text-[var(--color-text)] rounded-2xl shadow-2xl overflow-hidden animate-scale-in outline-none`}
       >
         {/* Header */}
-        <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-[var(--color-primary)] text-white">
-          <h2 id="dialog-title" className="text-lg font-bold">
+        <div className="shrink-0 flex items-center justify-between gap-4 px-6 py-4 bg-[var(--color-primary)] text-white">
+          <h2 id="dialog-title" className={size === 'xl' ? 'text-xl md:text-2xl font-bold' : 'text-lg font-bold'}>
             {title}
           </h2>
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
+            className="shrink-0 p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
             aria-label="닫기"
           >
             <FaTimes className="text-lg" />
@@ -80,7 +87,7 @@ export function Dialog({ isOpen, onClose, title, children }: DialogProps) {
         </div>
 
         {/* Body */}
-        <div className="p-6 overflow-y-auto max-h-[calc(85vh-64px)]">
+        <div className={`min-h-0 flex-1 overflow-y-auto ${size === 'xl' ? 'p-6 md:p-8' : 'p-6'}`}>
           {children}
         </div>
       </div>
