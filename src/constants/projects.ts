@@ -75,7 +75,9 @@ export const FEATURED_PROJECTS: Project[] = [
       'NestJS + Prisma + Google Cloud Storage 백엔드 구축',
       'QR 코드 생성 및 AR 콘텐츠 배포 시스템 구현',
     ],
-    images: shots('ar-content-tool', ['body-01', 'body-02', 'body-03', 'body-04']),
+    url: 'https://www.youtube.com/watch?v=CuocAmL-sHc',
+    urlLabel: '시연 영상 보기',
+    images: shots('ar-content-tool',['body-01', 'body-02', 'body-03', 'body-04']),
     techs: ['React', 'MindAR', 'Three.js', 'NestJS'],
   },
   {

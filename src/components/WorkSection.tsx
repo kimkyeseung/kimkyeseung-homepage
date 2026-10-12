@@ -117,9 +117,16 @@ function ProjectLink({ url, label }: { url: string; label: string }) {
   )
 }
 
+// 링크가 유튜브 영상이면 상세 다이얼로그 안에서 바로 재생할 수 있게 ID를 뽑는다
+function youtubeId(url: string): string | null {
+  const match = url.match(/(?:youtube\.com\/watch\?(?:.*&)?v=|youtu\.be\/)([\w-]{11})/)
+  return match ? match[1] : null
+}
+
 function ProjectDetail({ project }: { project: Project }) {
   const [zoomed, setZoomed] = useState<number | null>(null)
   const screenshotAlt = (i: number) => `${project.title} 스크린샷 ${i + 1}`
+  const videoId = project.url ? youtubeId(project.url) : null
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-10">
@@ -168,6 +175,23 @@ function ProjectDetail({ project }: { project: Project }) {
                 </li>
               ))}
             </ul>
+          </div>
+        )}
+
+        {videoId && (
+          <div>
+            <DetailHeading>Demo</DetailHeading>
+            <div className="aspect-video overflow-hidden rounded-xl border border-[var(--color-border)] bg-black shadow-sm">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+                title={`${project.title} 시연 영상`}
+                loading="lazy"
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
           </div>
         )}
 
